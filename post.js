@@ -73,4 +73,14 @@ async function loadPost() {
 }
 
 loadPost();
+
+// ====== Newsletter (demo)
+document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('newsletterMsg');
+  msg.textContent = '¡Gracias! Revisa tu correo para confirmar la suscripción.';
+  setTimeout(() => { msg.textContent = ''; }, 6000);
+});
+
+// Año en footer
 document.getElementById('y').textContent = new Date().getFullYear();
