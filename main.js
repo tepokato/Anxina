@@ -137,7 +137,8 @@ q.addEventListener('input', () => {
 });
 
 // ====== Newsletter (demo)
-document.getElementById('newsletterForm').addEventListener('submit', () => {
+document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+  e.preventDefault();
   const msg = document.getElementById('newsletterMsg');
   msg.textContent = '¡Gracias! Revisa tu correo para confirmar la suscripción.';
   setTimeout(() => { msg.textContent = ''; }, 6000);
