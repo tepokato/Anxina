@@ -58,9 +58,12 @@ async function loadArticles() {
 function renderArticles(list) {
   articlesEl.innerHTML = '';
   list.forEach(a => {
+    const link = document.createElement('a');
+    link.href = `post.html?id=${a.id}`;
+    link.setAttribute('role', 'listitem');
+
     const el = document.createElement('article');
     el.className = 'card';
-    el.setAttribute('role', 'listitem');
     el.innerHTML = `
       <div class="thumb" aria-hidden="true"></div>
       <div class="pad">
@@ -71,7 +74,8 @@ function renderArticles(list) {
       </div>
       <div class="pad meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
     `;
-    articlesEl.appendChild(el);
+    link.appendChild(el);
+    articlesEl.appendChild(link);
   });
 }
 
