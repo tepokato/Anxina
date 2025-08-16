@@ -47,7 +47,8 @@ async function loadArticles() {
         lectura: estimateReadingTime(text)
       };
     });
-    articles = mapped;
+    renderHero(mapped);
+    articles = mapped.slice(4);
     renderArticles(articles);
   } catch (err) {
     console.error('Error al cargar artículos', err);
@@ -76,6 +77,41 @@ function renderArticles(list) {
     `;
     link.appendChild(el);
     articlesEl.appendChild(link);
+  });
+}
+
+function renderHero(list) {
+  const heroEl = document.getElementById('hero');
+  const miniListEl = document.getElementById('mini-list');
+  if (!heroEl || !miniListEl || !list.length) return;
+
+  const [first, ...rest] = list;
+  heroEl.innerHTML = `
+    <a href="post.html?id=${first.id}">
+      <div class="hero-media" aria-hidden="true"><i class="bi bi-list"></i></div>
+      <div class="pad">
+        <span class="kicker">${first.categoria}</span>
+        <h1 class="title-xl" id="destacados">${first.titulo}</h1>
+        <p>${first.resumen}</p>
+        <div class="meta"><span>${formatDate(first.fecha)}</span><span>•</span><span>${first.lectura}</span></div>
+      </div>
+    </a>
+  `;
+
+  miniListEl.innerHTML = '';
+  rest.slice(0,3).forEach(a => {
+    const link = document.createElement('a');
+    link.href = `post.html?id=${a.id}`;
+    link.className = 'mini';
+    link.innerHTML = `
+      <div class="thumb" aria-hidden="true"></div>
+      <div class="pad">
+        <span class="kicker">${a.categoria}</span>
+        <h3>${a.titulo}</h3>
+        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
+      </div>
+    `;
+    miniListEl.appendChild(link);
   });
 }
 
