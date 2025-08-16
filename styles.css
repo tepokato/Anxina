@@ -1,5 +1,6 @@
 :root {
   --bg: #ffffff;
+  --panel-rgb: 248,250,252;
   --panel: #f8fafc; /* slate-50 */
   --text: #0f172a;  /* slate-900 */
   --muted: #334155; /* slate-700 */
@@ -13,6 +14,7 @@
 }
 [data-theme="dark"] {
   --bg: #0b1020;    /* deep slate */
+  --panel-rgb: 15,23,42;
   --panel: #0f172a;
   --text: #e5e7eb;  /* slate-200 */
   --muted: #a1a1aa; /* zinc-400 */
