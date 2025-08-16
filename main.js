@@ -1,3 +1,5 @@
+const themeToggle = document.getElementById('themeToggle');
+
 // ====== Preferencias de tema (claro/oscuro)
 (function initTheme() {
   try {
@@ -8,8 +10,6 @@
     updateThemeToggle(theme);
   } catch(e) {}
 })();
-
-const themeToggle = document.getElementById('themeToggle');
 themeToggle.addEventListener('click', () => {
   const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   const next = current === 'dark' ? 'light' : 'dark';
