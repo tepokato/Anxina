@@ -10,7 +10,7 @@ const themeToggle = document.getElementById('themeToggle');
     updateThemeToggle(theme);
   } catch(e) {}
 })();
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('change', () => {
   const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   const next = current === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', next);
@@ -20,9 +20,7 @@ themeToggle.addEventListener('click', () => {
 
 function updateThemeToggle(theme) {
   const isDark = theme === 'dark';
-  themeToggle.setAttribute('aria-pressed', String(isDark));
-  themeToggle.querySelector('.icon').textContent = isDark ? '☀️' : '🌙';
-  themeToggle.querySelector('.txt').textContent = isDark ? 'Claro' : 'Oscuro';
+  themeToggle.checked = isDark;
   themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
 }
 
