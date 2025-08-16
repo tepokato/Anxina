@@ -54,7 +54,7 @@ header.site-header {
 }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
 .brand-logo { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); }
-.brand-logo svg { width: 22px; height: 22px; fill: white; }
+.brand-logo img { width: 22px; height: 22px; }
 .brand small { display: block; color: var(--muted); font-weight: 600; font-size: 12px; margin-top: -6px; }
 
 .nav-links { display: flex; gap: 10px; flex-wrap: wrap; }
