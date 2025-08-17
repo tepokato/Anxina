@@ -252,70 +252,67 @@ header.site-header {
 .tags { display: flex; gap: 0.5em; flex-wrap: wrap; }
 .tag { font-size: 0.75em; padding: 0.25em 0.625em; border-radius: 62.4375em; background: rgba(2,132,199,.14); color: var(--muted); border: 0.0625em dashed var(--border); }
 
-.social-cards {
+.social-bar {
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  height: 70px;
+  width: 140px;
 }
 
-.social-cards .up,
-.social-cards .down {
+.social-bar svg {
+  position: absolute;
   display: flex;
-  flex-direction: row;
-  gap: 0.5em;
-}
-
-.card1,
-.card2,
-.card3,
-.card4 {
-  width: 5.625em;
-  height: 5.625em;
-  outline: none;
-  border: none;
-  background: var(--light);
-  box-shadow: rgba(50, 50, 93, 0.25) 0em 0.125em 0.3125em -0.0625em, rgba(0, 0, 0, 0.3) 0em 0.0625em 0.1875em -0.0625em;
-  transition: .2s ease-in-out;
+  width: 60%;
+  height: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 1;
+  transition: opacity 0.25s;
+  z-index: 2;
+  padding: 0.25rem;
   cursor: pointer;
+  transform: scale(1);
+}
+
+.social-bar .social-link {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.875em;
+  justify-content: center;
+  width: 50%;
+  color: whitesmoke;
+  font-size: 24px;
   text-decoration: none;
+  transition: 0.25s;
+  border-radius: 50px;
 }
 
-.card1 { border-radius: 5.625em 0.3125em 0.3125em 0.3125em; color: #cc39a4; }
-.card2 { border-radius: 0.3125em 5.625em 0.3125em 0.3125em; color: #03A9F4; }
-.card3 { border-radius: 0.3125em 0.3125em 0.3125em 5.625em; color: black; }
-.card4 { border-radius: 0.3125em 0.3125em 5.625em 0.3125em; color: #8c9eff; }
-
-.card1:hover {
-  cursor: pointer;
-  scale: 1.1;
-  background-color: #cc39a4;
+.social-bar .social-link:hover {
+  animation: bounce_613 0.4s linear;
+  color: white;
 }
-.card1:hover .bi { color: white; }
 
-.card2:hover {
-  cursor: pointer;
-  scale: 1.1;
-  background-color: #03A9F4;
+.social-bar .bluesky:hover {
+  background-color: #1185fe;
 }
-.card2:hover .bi { color: white; }
 
-.card3:hover {
-  cursor: pointer;
-  scale: 1.1;
-  background-color: black;
+.social-bar .discord:hover {
+  background-color: #5865f2;
 }
-.card3:hover .bi { color: white; }
 
-.card4:hover {
-  cursor: pointer;
-  scale: 1.1;
-  background-color: #8c9eff;
+@keyframes bounce_613 {
+  40% {
+    transform: scale(1.4);
+  }
+  60% {
+    transform: scale(0.8);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.card4:hover .bi { color: white; }
 
 .half-card {
   margin: 1.25em 0;
