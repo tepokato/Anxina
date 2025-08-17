@@ -102,19 +102,21 @@ header.site-header {
   border: none;
   border-radius: 12px;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(270deg, #991b1b, #c2410c, #7e22ce);
+  color: #E9EFEC;
+  background: linear-gradient(270deg, #16423C, #6A9C89);
   background-size: 600% 600%;
   animation: gradientMove 8s ease infinite;
   cursor: pointer;
   transition: transform .2s, box-shadow .2s;
 }
-.btn:hover {
+.btn:hover,
+.btn:active {
+  background: linear-gradient(270deg, #6A9C89, #C4DAD2);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,.3);
 }
 .btn:focus {
-  outline: 2px solid #fff;
+  outline: 2px solid #E9EFEC;
   outline-offset: 2px;
 }
 
@@ -321,15 +323,19 @@ header.site-header {
   height: 48px;
   border: none;
   border-radius: 50%;
-  background: linear-gradient(270deg, #991b1b, #c2410c, #7e22ce);
+  background: linear-gradient(270deg, #16423C, #6A9C89);
   background-size: 600% 600%;
-  color: #fff;
+  color: #E9EFEC;
   box-shadow: var(--shadow);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease;
   animation: gradientMove 8s ease infinite;
+}
+.back-to-top:hover,
+.back-to-top:active {
+  background: linear-gradient(270deg, #6A9C89, #C4DAD2);
 }
 .back-to-top.show {
   opacity: 1;
