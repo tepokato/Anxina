@@ -197,7 +197,7 @@ header.site-header {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f4f4f5;
+  background-color: var(--panel);
   transition: .4s;
   border-radius: 1.875em;
 }
@@ -216,7 +216,7 @@ header.site-header {
 }
 
 .switch input:checked + .slider {
-  background-color: #303136;
+  background-color: var(--accent);
 }
 
 .switch input:checked + .slider:before {
