@@ -281,6 +281,7 @@ header.site-header {
   justify-content: center;
   align-items: center;
   font-size: 1.875em;
+  text-decoration: none;
 }
 
 .card1 { border-radius: 5.625em 0.3125em 0.3125em 0.3125em; color: #cc39a4; }
