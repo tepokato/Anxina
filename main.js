@@ -75,14 +75,13 @@ function renderArticles(list) {
     const el = document.createElement('article');
     el.className = 'card';
     el.innerHTML = `
-      <div class="thumb" aria-hidden="true"></div>
+      <figure class="thumb" aria-hidden="true"></figure>
       <div class="pad">
         <span class="kicker">${a.categoria}</span>
         <h3>${a.titulo}</h3>
         <p>${a.resumen}</p>
-        <div class="tags">${a.etiquetas.map(t => `<span class='tag'>#${t}</span>`).join('')}</div>
+        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
       </div>
-      <div class="pad meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
     `;
     link.appendChild(el);
     articlesEl.appendChild(link);
@@ -97,7 +96,7 @@ function renderHero(list) {
   const [first, ...rest] = list;
   heroEl.innerHTML = `
     <a href="post.html?id=${first.id}">
-      <div class="hero-media" aria-hidden="true"><i class="bi bi-list"></i></div>
+      <div class="thumb" aria-hidden="true"></div>
       <div class="pad">
         <span class="kicker">${first.categoria}</span>
         <h1 class="title-xl" id="destacados">${first.titulo}</h1>
