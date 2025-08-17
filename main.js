@@ -40,7 +40,7 @@ const articlesEl = document.getElementById('articles');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
 
 async function loadArticles() {
-  const url = 'https://www.googleapis.com/blogger/v3/blogs/4840049977445065362/posts?key=AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA';
+  const url = `https://www.googleapis.com/blogger/v3/blogs/4840049977445065362/posts?key=AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA`;
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.statusText);
@@ -166,7 +166,11 @@ q.addEventListener('input', () => {
   const current = document.querySelector('.nav-links [aria-current="page"]');
   const base = current ? current.getAttribute('data-filter') : 'todas';
   const pool = base === 'todas' ? articles : articles.filter(a => a.categoria === base);
-  const results = !term ? pool : pool.filter(a => (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term));
+  const results = !term
+    ? pool
+    : pool.filter(a =>
+        (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term)
+      );
   renderArticles(results);
 });
 
