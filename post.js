@@ -39,6 +39,7 @@ const apiKey = 'AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA';
 const titleEl = document.getElementById('post-title');
 const metaEl = document.getElementById('post-meta');
 const contentEl = document.getElementById('post-content');
+const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
 
 function formatDate(iso) {
   try {
@@ -78,6 +79,11 @@ async function loadPost() {
     const meta = [data.author && data.author.displayName, formatDate(data.published), estimateReadingTime(text)].filter(Boolean).join(' • ');
     metaEl.textContent = meta;
     contentEl.innerHTML = data.content || '';
+    contentEl.querySelectorAll('img').forEach(img => {
+      if (!img.alt || img.alt.trim() === '') {
+        img.alt = data.title || '';
+      }
+    });
   } catch (err) {
     titleEl.textContent = 'Error al cargar el artículo';
     console.error(err);
@@ -98,6 +104,9 @@ async function loadArticles() {
     const data = await res.json();
     articles = (data.items || []).map(item => {
       const text = stripHtml(item.content || '');
+      const div = document.createElement('div');
+      div.innerHTML = item.content || '';
+      const img = div.querySelector('img');
       return {
         id: item.id,
         titulo: item.title || '',
@@ -105,7 +114,8 @@ async function loadArticles() {
         categoria: (item.labels && item.labels[0]) || 'General',
         etiquetas: item.labels ? item.labels.slice(1) : [],
         fecha: item.published ? item.published.split('T')[0] : '',
-        lectura: estimateReadingTimeShort(text)
+        lectura: estimateReadingTimeShort(text),
+        imagen: img ? img.src : fallbackImage
       };
     });
     renderArticles(articles);
@@ -126,7 +136,7 @@ function renderArticles(list) {
     const el = document.createElement('article');
     el.className = 'card';
     el.innerHTML = `
-      <div class="thumb" aria-hidden="true"></div>
+      <figure class="thumb" aria-hidden="true"><img src="${a.imagen || fallbackImage}" alt="${a.titulo}" loading="lazy"></figure>
       <div class="pad">
         <span class="kicker">${a.categoria}</span>
         <h3>${a.titulo}</h3>
