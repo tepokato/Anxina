@@ -216,7 +216,7 @@ header.site-header {
 }
 
 .switch input:checked + .slider {
-  background-color: var(--accent);
+  background-color: #16423C;
 }
 
 .switch input:checked + .slider:before {
