@@ -1,6 +1,5 @@
 const themeToggle = document.getElementById('themeToggle');
 
-// ====== Preferencias de tema (claro/oscuro)
 (function initTheme() {
   try {
     const saved = localStorage.getItem('theme');
@@ -24,7 +23,6 @@ function updateThemeToggle(theme) {
   themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
 }
 
-// ====== Skip link
 const skip = document.querySelector('.skip-link');
 if (skip) {
   window.addEventListener('scroll', () => {
@@ -33,7 +31,6 @@ if (skip) {
   skip.addEventListener('click', () => skip.classList.add('hidden'));
 }
 
-// ====== Datos de artículos (se cargan dinámicamente)
 let articles = [];
 
 const articlesEl = document.getElementById('articles');
@@ -148,7 +145,6 @@ function estimateReadingTime(text) {
 
 loadArticles();
 
-// ====== Filtro por categoría
 const links = document.querySelectorAll('.nav-links [data-filter]');
 links.forEach(link => link.addEventListener('click', (e) => {
   e.preventDefault();
@@ -159,7 +155,6 @@ links.forEach(link => link.addEventListener('click', (e) => {
   renderArticles(articles.filter(a => a.categoria === f));
 }));
 
-// ====== Búsqueda simple
 const q = document.getElementById('q');
 q.addEventListener('input', () => {
   const term = q.value.trim().toLowerCase();
@@ -174,7 +169,6 @@ q.addEventListener('input', () => {
   renderArticles(results);
 });
 
-// ====== Newsletter (demo)
 document.getElementById('newsletterForm').addEventListener('submit', (e) => {
   e.preventDefault();
   const msg = document.getElementById('newsletterMsg');
@@ -182,10 +176,8 @@ document.getElementById('newsletterForm').addEventListener('submit', (e) => {
   setTimeout(() => { msg.textContent = ''; }, 6000);
 });
 
-// Año en footer
 document.getElementById('y').textContent = new Date().getFullYear();
 
-// ====== Cookie consent
 (function () {
   const banner = document.getElementById('cookie-banner');
   const btn = document.getElementById('cookie-accept');
