@@ -3,8 +3,8 @@
   "short_name": "TecnoCiencia",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0f172a",
+  "background_color": "#E9EFEC",
+  "theme_color": "#16423C",
   "icons": [
     {
       "src": "icons/android-chrome-192x192.png",
