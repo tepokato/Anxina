@@ -27,7 +27,6 @@
   --shadow: 0 0.75em 2.5em rgba(0,0,0,.45);
 }
 
-/* Base */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -64,7 +63,6 @@ a:hover { text-decoration: underline; }
 }
 [data-theme="dark"] .skip-link { color: var(--bg); }
 
-/* Layout */
 .container { max-width: 70em; margin: 0 auto; padding: 0 1.25em; }
 
 header.site-header {
@@ -226,7 +224,6 @@ header.site-header {
   box-shadow: inset -0.1875em -0.125em 0.3125em -0.125em #8983f7, inset -0.625em -0.25em 0 0 #a3dafb;
 }
 
-/* Hero */
 .hero { display: grid; gap: 1.25em; grid-template-columns: 1.2fr .8fr; padding: 1.75em 0; }
 .hero-card, .mini { border: 0.0625em solid var(--border); border-radius: 1em; background: var(--panel); overflow: hidden; }
 .hero-media { aspect-ratio: 16/9; background: linear-gradient(135deg, rgba(2,132,199,.2), rgba(168,85,247,.18)); display: grid; place-items: center; }
@@ -242,7 +239,6 @@ header.site-header {
 .mini .pad { padding: 0.75em; }
 .mini h3 { margin: 0.25em 0 0.5em; font-size: 1em; }
 
-/* Grid */
 .section { padding: 0.5em 0 2.5em; }
 .section h2 { font-size: 1.25em; margin: 0 0 1em; display: flex; align-items: center; gap: 0.625em; }
 .section h2 .bi { font-size: 1.25em; }
@@ -254,7 +250,6 @@ header.site-header {
 .tags { display: flex; gap: 0.5em; flex-wrap: wrap; }
 .tag { font-size: 0.75em; padding: 0.25em 0.625em; border-radius: 62.4375em; background: rgba(2,132,199,.14); color: var(--muted); border: 0.0625em dashed var(--border); }
 
-/* Social cards */
 .social-cards {
   display: flex;
   flex-direction: column;
@@ -338,7 +333,6 @@ header.site-header {
 }
 .card4:hover .discord { fill: white; }
 
-/* Shared card style for half-width layouts */
 .half-card {
   margin: 1.25em 0;
   padding: 1.25em;
@@ -347,7 +341,6 @@ header.site-header {
   box-shadow: var(--shadow);
 }
 
-/* Newsletter */
 .newsletter {
   position: relative;
   background: linear-gradient(135deg, #0e7490, #5b21b6);
@@ -398,7 +391,6 @@ header.site-header {
   100% { background-position: 0% 50%; }
 }
 
-/* Back to top button */
 .back-to-top {
   position: fixed;
   bottom: 1.25em;
@@ -429,7 +421,6 @@ header.site-header {
   pointer-events: auto;
 }
 
-/* Cookie banner */
 .cookie-banner {
   position: fixed;
   bottom: 1.25em;
@@ -480,7 +471,6 @@ header.site-header {
 [data-theme="dark"] .cookie-icon,
 [data-theme="dark"] .cookie-btn { color: var(--bg); }
 
-/* Footer */
 footer {
   background: rgba(var(--panel-rgb), 0.7);
   backdrop-filter: blur(0.625em);
@@ -490,7 +480,6 @@ footer {
 }
 .foot { display: grid; gap: 1em; grid-template-columns: 1fr auto; align-items: center; }
 
-/* Responsive */
 @media (max-width: 60em) {
   .hero { grid-template-columns: 1fr; }
   .grid { grid-template-columns: repeat(2, 1fr); }
