@@ -8,6 +8,7 @@
   --border: #6A9C89;
   --accent: #16423C;
   --accent-2: #6A9C89;
+  --light: #E9EFEC;
   --ok: #22c55e;
   --warn: #f59e0b;
   --danger: #ef4444;
@@ -55,12 +56,13 @@ a:hover { text-decoration: underline; }
   width: 40px;
   height: 40px;
   background: var(--accent);
-  color: #fff;
+  color: var(--light);
   border-radius: 50%;
 }
 .skip-link.hidden {
   display: none;
 }
+[data-theme="dark"] .skip-link { color: var(--bg); }
 
 /* Layout */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
@@ -267,7 +269,7 @@ header.site-header {
   display: grid;
   gap: 16px;
   overflow: hidden;
-  color: #fff;
+  color: var(--light);
 }
 .newsletter-wrapper {
   position: relative;
@@ -284,7 +286,7 @@ header.site-header {
   padding: 12px 14px;
   border-radius: 12px;
   border: none;
-  background: #fff;
+  background: var(--light);
   color: #0f172a;
 }
 .input:focus {
@@ -367,7 +369,7 @@ header.site-header {
   width: 32px;
   height: 32px;
   background: var(--accent);
-  color: #fff;
+  color: var(--light);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -381,7 +383,7 @@ header.site-header {
   justify-self: end;
   padding: 8px 16px;
   background: var(--accent);
-  color: #fff;
+  color: var(--light);
   border: none;
   border-radius: 12px;
   font-weight: 700;
@@ -390,6 +392,8 @@ header.site-header {
 .cookie-btn:focus {
   outline: 2px solid var(--accent-2);
 }
+[data-theme="dark"] .cookie-icon,
+[data-theme="dark"] .cookie-btn { color: var(--bg); }
 
 /* Footer */
 footer {
@@ -431,25 +435,25 @@ footer {
 .card1:hover,
 .card1:focus { background: #cc39a4; }
 .card1:hover i,
-.card1:focus i { color: #fff; }
+.card1:focus i { color: var(--light); }
 
 .card2 i { color: #1da1f2; }
 .card2:hover,
 .card2:focus { background: #1da1f2; }
 .card2:hover i,
-.card2:focus i { color: #fff; }
+.card2:focus i { color: var(--light); }
 
 .card3 i { color: #333; }
 .card3:hover,
 .card3:focus { background: #333; }
 .card3:hover i,
-.card3:focus i { color: #fff; }
+.card3:focus i { color: var(--light); }
 
 .card4 i { color: #5865f2; }
 .card4:hover,
 .card4:focus { background: #5865f2; }
 .card4:hover i,
-.card4:focus i { color: #fff; }
+.card4:focus i { color: var(--light); }
 
 /* Responsive */
 @media (max-width: 960px) {
