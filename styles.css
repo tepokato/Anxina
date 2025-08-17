@@ -386,7 +386,13 @@ header.site-header {
 }
 
 /* Footer */
-footer { border-top: 1px solid var(--border); padding: 22px 0 60px; color: var(--muted); }
+footer {
+  background: rgba(var(--panel-rgb), 0.7);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+  padding: 22px 0 60px;
+  color: var(--muted);
+}
 .foot { display: grid; gap: 16px; grid-template-columns: 1fr auto; align-items: center; }
 
 .social-cards {
