@@ -75,6 +75,7 @@ async function loadPost() {
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
     titleEl.textContent = data.title || '';
+    document.title = data.title || '';
     const text = stripHtml(data.content || '');
     const meta = [data.author && data.author.displayName, formatDate(data.published), estimateReadingTime(text)].filter(Boolean).join(' • ');
     metaEl.textContent = meta;
