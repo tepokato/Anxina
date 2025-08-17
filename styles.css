@@ -399,61 +399,55 @@ footer {
 }
 .foot { display: grid; gap: 1em; grid-template-columns: 1fr auto; align-items: center; }
 
-/* Social media bar */
-.social-bar {
+/* Social icons */
+footer > .container:first-of-type {
   display: flex;
   column-gap: 28px;
-  justify-content: center;
-  margin-bottom: 1.5em;
 }
 
-.social-icon {
+.icon {
   display: inline-flex;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   text-decoration: none;
   font-size: 25px;
-  outline: 2px solid var(--text);
+  outline: 2px solid white;
   border-radius: 50%;
   transition-property: outline-offset, outline-color, background-color;
   transition-duration: 0.25s;
-  color: var(--text);
+  color: white;
 }
 
-.social-icon:hover {
+.icon:hover {
   outline-offset: 4px;
 }
 
-.social-icon svg {
+.icon svg {
   margin: auto;
-  width: 21px;
+  width: 31px;
 }
 
-.social-instagram:hover {
+.icon-instagram:hover {
   background-color: red;
   outline-color: red;
-  color: #fff;
 }
 
-.social-discord:hover {
+.icon-dis:hover {
   background-color: rgb(76, 0, 255);
   outline-color: rgb(76, 0, 255);
-  color: #fff;
 }
 
-.social-github:hover {
+.icon-github:hover {
   background-color: #555555;
   outline-color: #555555;
-  color: #fff;
 }
 
-.social-linkedin:hover {
+.icon-in:hover {
   background-color: #0a66c2;
   outline-color: #0a66c2;
-  color: #fff;
 }
 
-.social-icon:hover svg {
+.icon:hover svg {
   animation: shake 0.25s;
 }
 
