@@ -24,6 +24,15 @@ function updateThemeToggle(theme) {
   themeToggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
 }
 
+// ====== Skip link
+const skip = document.querySelector('.skip-link');
+if (skip) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 0) skip.classList.add('hidden');
+  }, { once: true });
+  skip.addEventListener('click', () => skip.classList.add('hidden'));
+}
+
 // ====== Datos de artículos (se cargan dinámicamente)
 let articles = [];
 
