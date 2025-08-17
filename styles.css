@@ -1,5 +1,6 @@
 :root {
   --bg: #ffffff;
+  --bg-pattern: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
   --panel-rgb: 248,250,252;
   --panel: #f8fafc; /* slate-50 */
   --text: #0f172a;  /* slate-900 */
@@ -13,7 +14,8 @@
   --shadow: 0 10px 30px rgba(2,6,23,.12);
 }
 [data-theme="dark"] {
-  --bg: #0b1020;    /* deep slate */
+  --bg: #313131; /* replace existing dark background color */
+  --bg-pattern: radial-gradient(rgba(255, 255, 255, 0.171) 2px, transparent 0);
   --panel-rgb: 15,23,42;
   --panel: #0f172a;
   --text: #e5e7eb;  /* slate-200 */
@@ -30,7 +32,10 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: var(--bg-pattern);
+  background-size: 30px 30px;
+  background-position: -5px -5px;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
