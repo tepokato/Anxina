@@ -437,14 +437,9 @@ footer > .container:first-of-type {
   outline-color: rgb(76, 0, 255);
 }
 
-.icon-github:hover {
-  background-color: #555555;
-  outline-color: #555555;
-}
-
-.icon-in:hover {
-  background-color: #0a66c2;
-  outline-color: #0a66c2;
+.icon-bluesky:hover {
+  background-color: #1185fe;
+  outline-color: #1185fe;
 }
 
 .icon:hover svg {
