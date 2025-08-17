@@ -37,6 +37,7 @@ if (skip) {
 let articles = [];
 
 const articlesEl = document.getElementById('articles');
+const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
 
 async function loadArticles() {
   const url = 'https://www.googleapis.com/blogger/v3/blogs/4840049977445065362/posts?key=AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA';
@@ -46,6 +47,9 @@ async function loadArticles() {
     const data = await res.json();
     const mapped = (data.items || []).map(item => {
       const text = stripHtml(item.content || '');
+      const div = document.createElement('div');
+      div.innerHTML = item.content || '';
+      const img = div.querySelector('img');
       return {
         id: item.id,
         titulo: item.title || '',
@@ -53,7 +57,8 @@ async function loadArticles() {
         categoria: (item.labels && item.labels[0]) || 'General',
         etiquetas: item.labels ? item.labels.slice(1) : [],
         fecha: item.published ? item.published.split('T')[0] : '',
-        lectura: estimateReadingTime(text)
+        lectura: estimateReadingTime(text),
+        imagen: img ? img.src : fallbackImage
       };
     });
     renderHero(mapped);
@@ -75,7 +80,7 @@ function renderArticles(list) {
     const el = document.createElement('article');
     el.className = 'card';
     el.innerHTML = `
-      <figure class="thumb" aria-hidden="true"></figure>
+      <figure class="thumb" aria-hidden="true"><img src="${a.imagen || fallbackImage}" alt="" loading="lazy"></figure>
       <div class="pad">
         <span class="kicker">${a.categoria}</span>
         <h3>${a.titulo}</h3>
