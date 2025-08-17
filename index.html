@@ -65,10 +65,12 @@
       </nav>
 
       <div class="actions">
-        <label class="search" aria-label="Buscar artículos">
-          <i class="bi bi-search search-icon"></i>
-          <input id="q" class="search-input" type="search" placeholder="Buscar en el sitio…" autocomplete="off" />
-        </label>
+        <div class="search">
+          <button id="searchBtn" class="search-button" aria-label="Buscar" aria-expanded="false">
+            <i class="bi bi-search"></i>
+          </button>
+          <input id="q" class="search-input" type="search" placeholder="Buscar en el sitio…" autocomplete="off" hidden aria-label="Buscar en el sitio" />
+        </div>
         <label class="theme-switch">
           <input id="themeToggle" class="toggle-checkbox" type="checkbox" aria-label="Cambiar a modo oscuro" />
           <div class="toggle-slot">

@@ -157,6 +157,32 @@ links.forEach(link => link.addEventListener('click', (e) => {
 }));
 
 const q = document.getElementById('q');
+const searchWrap = document.querySelector('.search');
+const searchBtn = document.getElementById('searchBtn');
+
+searchBtn.addEventListener('click', e => {
+  e.preventDefault();
+  searchWrap.classList.toggle('active');
+  const active = searchWrap.classList.contains('active');
+  q.hidden = !active;
+  searchBtn.setAttribute('aria-expanded', active);
+  if (!q.hidden) q.focus();
+});
+
+document.addEventListener('click', e => {
+  if (!searchWrap.contains(e.target)) {
+    searchWrap.classList.remove('active');
+    q.hidden = true;
+    searchBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+q.addEventListener('search', () => {
+  searchWrap.classList.remove('active');
+  q.hidden = true;
+  searchBtn.setAttribute('aria-expanded', 'false');
+});
+
 q.addEventListener('input', () => {
   const term = q.value.trim().toLowerCase();
   const current = document.querySelector('.nav-links [aria-current="page"]');
