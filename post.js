@@ -116,6 +116,7 @@ async function loadArticles() {
         etiquetas: item.labels ? item.labels.slice(1) : [],
         fecha: item.published ? item.published.split('T')[0] : '',
         lectura: estimateReadingTimeShort(text),
+        autor: item.author && item.author.displayName,
         imagen: img ? img.src : fallbackImage
       };
     });
@@ -144,7 +145,7 @@ function renderArticles(list) {
         <p>${a.resumen}</p>
         <div class="tags">${a.etiquetas.map(t => `<span class='tag'>#${t}</span>`).join('')}</div>
       </div>
-      <div class="pad meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
+      <div class="pad meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span>${a.autor ? `<span>•</span><span>${a.autor}</span>` : ''}</div>
     `;
     link.appendChild(el);
     articlesEl.appendChild(link);

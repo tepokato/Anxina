@@ -55,6 +55,7 @@ async function loadArticles() {
         etiquetas: item.labels ? item.labels.slice(1) : [],
         fecha: item.published ? item.published.split('T')[0] : '',
         lectura: estimateReadingTime(text),
+        autor: item.author && item.author.displayName,
         imagen: img ? img.src : fallbackImage
       };
     });
@@ -82,7 +83,7 @@ function renderArticles(list) {
         <span class="kicker">${a.categoria}</span>
         <h3>${a.titulo}</h3>
         <p>${a.resumen}</p>
-        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
+        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span>${a.autor ? `<span>•</span><span>${a.autor}</span>` : ''}</div>
       </div>
     `;
     link.appendChild(el);
@@ -103,7 +104,7 @@ function renderHero(list) {
         <span class="kicker">${first.categoria}</span>
         <h1 class="title-xl" id="destacados">${first.titulo}</h1>
         <p>${first.resumen}</p>
-        <div class="meta"><span>${formatDate(first.fecha)}</span><span>•</span><span>${first.lectura}</span></div>
+        <div class="meta"><span>${formatDate(first.fecha)}</span><span>•</span><span>${first.lectura}</span>${first.autor ? `<span>•</span><span>${first.autor}</span>` : ''}</div>
       </div>
     </a>
   `;
@@ -118,7 +119,7 @@ function renderHero(list) {
       <div class="pad">
         <span class="kicker">${a.categoria}</span>
         <h3>${a.titulo}</h3>
-        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span></div>
+        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span>${a.autor ? `<span>•</span><span>${a.autor}</span>` : ''}</div>
       </div>
     `;
     miniListEl.appendChild(link);
