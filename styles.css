@@ -297,6 +297,33 @@ header.site-header {
   100% { background-position: 0% 50%; }
 }
 
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(270deg, #991b1b, #c2410c, #7e22ce);
+  background-size: 600% 600%;
+  color: #fff;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  animation: gradientMove 8s ease infinite;
+}
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Cookie banner */
 .cookie-banner {
   position: fixed;
