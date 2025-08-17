@@ -98,7 +98,7 @@ function renderHero(list) {
   const [first, ...rest] = list;
   heroEl.innerHTML = `
     <a href="post.html?id=${first.id}">
-      <div class="thumb" aria-hidden="true"><img src="${first.imagen || fallbackImage}" alt="${first.titulo}"></div>
+      <figure class="thumb" aria-hidden="true"><img src="${first.imagen || fallbackImage}" alt="${first.titulo}"></figure>
       <div class="pad">
         <span class="kicker">${first.categoria}</span>
         <h1 class="title-xl" id="destacados">${first.titulo}</h1>
@@ -114,7 +114,7 @@ function renderHero(list) {
     link.href = `post.html?id=${a.id}`;
     link.className = 'mini';
     link.innerHTML = `
-      <div class="thumb" aria-hidden="true"><img src="${a.imagen || fallbackImage}" alt="${a.titulo}" loading="lazy"></div>
+      <figure class="thumb" aria-hidden="true"><img src="${a.imagen || fallbackImage}" alt="${a.titulo}" loading="lazy"></figure>
       <div class="pad">
         <span class="kicker">${a.categoria}</span>
         <h3>${a.titulo}</h3>
