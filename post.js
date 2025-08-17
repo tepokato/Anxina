@@ -84,3 +84,23 @@ document.getElementById('newsletterForm').addEventListener('submit', (e) => {
 
 // Año en footer
 document.getElementById('y').textContent = new Date().getFullYear();
+
+// ====== Cookie consent
+(function () {
+  const banner = document.getElementById('cookie-banner');
+  const btn = document.getElementById('cookie-accept');
+  if (!banner || !btn) return;
+  let previous = null;
+  if (!localStorage.getItem('cookieConsent')) {
+    banner.classList.add('show');
+    previous = document.activeElement;
+    btn.focus();
+  }
+  btn.addEventListener('click', () => {
+    banner.classList.remove('show');
+    localStorage.setItem('cookieConsent', 'true');
+    if (previous && typeof previous.focus === 'function') {
+      previous.focus();
+    }
+  });
+})();

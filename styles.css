@@ -161,6 +161,42 @@ header.site-header {
 .newsletter form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
 .input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); }
 
+/* Cookie banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 420px;
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  display: none;
+  z-index: 100;
+}
+.cookie-banner.show {
+  display: grid;
+  gap: 12px;
+}
+.cookie-banner p {
+  margin: 0;
+}
+.cookie-btn {
+  justify-self: end;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cookie-btn:focus {
+  outline: 2px solid var(--accent-2);
+}
+
 /* Footer */
 footer { border-top: 1px solid var(--border); padding: 22px 0 60px; color: var(--muted); }
 .foot { display: grid; gap: 16px; grid-template-columns: 1fr auto; align-items: center; }
