@@ -111,6 +111,7 @@ async function loadArticles() {
         lectura: estimateReadingTimeShort(text)
       };
     });
+    renderArticles(articles);
   } catch (err) {
     console.error('Error al cargar artículos', err);
   }
@@ -164,7 +165,8 @@ links.forEach(link => link.addEventListener('click', (e) => {
 const q = document.getElementById('q');
 q.addEventListener('input', () => {
   const term = q.value.trim().toLowerCase();
-  const base = document.querySelector('.nav-links [aria-current="page"]').getAttribute('data-filter');
+  const current = document.querySelector('.nav-links [aria-current="page"]');
+  const base = current ? current.getAttribute('data-filter') : 'todas';
   const pool = base === 'todas' ? articles : articles.filter(a => a.categoria === base);
   const results = !term ? pool : pool.filter(a => (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term));
   if (!results.length) {
