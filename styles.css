@@ -399,6 +399,73 @@ footer {
 }
 .foot { display: grid; gap: 1em; grid-template-columns: 1fr auto; align-items: center; }
 
+/* Social media bar */
+.social-bar {
+  display: flex;
+  column-gap: 28px;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.social-icon {
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  font-size: 25px;
+  outline: 2px solid var(--text);
+  border-radius: 50%;
+  transition-property: outline-offset, outline-color, background-color;
+  transition-duration: 0.25s;
+  color: var(--text);
+}
+
+.social-icon:hover {
+  outline-offset: 4px;
+}
+
+.social-icon svg {
+  margin: auto;
+  width: 31px;
+}
+
+.social-instagram:hover {
+  background-color: red;
+  outline-color: red;
+  color: #fff;
+}
+
+.social-discord:hover {
+  background-color: rgb(76, 0, 255);
+  outline-color: rgb(76, 0, 255);
+  color: #fff;
+}
+
+.social-github:hover {
+  background-color: #555555;
+  outline-color: #555555;
+  color: #fff;
+}
+
+.social-linkedin:hover {
+  background-color: #0a66c2;
+  outline-color: #0a66c2;
+  color: #fff;
+}
+
+.social-icon:hover svg {
+  animation: shake 0.25s;
+}
+
+@keyframes shake {
+  10% {
+    transform: rotate(15deg);
+  }
+  20% {
+    transform: rotate(-15deg);
+  }
+}
+
 @media (max-width: 60em) {
   .hero { grid-template-columns: 1fr; }
   .grid { grid-template-columns: repeat(2, 1fr); }
