@@ -382,6 +382,44 @@ header.site-header {
 footer { border-top: 1px solid var(--border); padding: 22px 0 60px; color: var(--muted); }
 .foot { display: grid; gap: 16px; grid-template-columns: 1fr auto; align-items: center; }
 
+.social-cards {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.social-cards button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 16px;
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-size: 32px;
+  transition: background .3s, color .3s;
+}
+
+.card1 i { color: #cc39a4; }
+.card1:hover { background: #cc39a4; }
+.card1:hover i { color: #fff; }
+
+.card2 i { color: #1da1f2; }
+.card2:hover { background: #1da1f2; }
+.card2:hover i { color: #fff; }
+
+.card3 i { color: #333; }
+.card3:hover { background: #333; }
+.card3:hover i { color: #fff; }
+
+.card4 i { color: #5865f2; }
+.card4:hover { background: #5865f2; }
+.card4:hover i { color: #fff; }
+
 /* Responsive */
 @media (max-width: 960px) {
   .hero { grid-template-columns: 1fr; }
