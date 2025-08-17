@@ -46,22 +46,34 @@ a:hover { text-decoration: underline; }
 
 .skip-link {
   position: fixed;
-  top: 1rem;
-  left: 1rem;
+  top: 1.25em;
+  left: 1.25em;
   z-index: 1000;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5em;
-  height: 2.5em;
-  background: var(--accent);
-  color: var(--light);
+  width: 3em;
+  height: 3em;
+  border: none;
   border-radius: 50%;
+  background: linear-gradient(270deg, #16423C, #6A9C89);
+  background-size: 600% 600%;
+  color: #E9EFEC;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  animation: gradientMove 8s ease infinite;
 }
-.skip-link.hidden {
-  display: none;
+.skip-link:hover,
+.skip-link:active {
+  background: linear-gradient(270deg, #6A9C89, #C4DAD2);
 }
-[data-theme="dark"] .skip-link { color: var(--bg); }
+.skip-link.show {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 .container { max-width: 70em; margin: 0 auto; padding: 0 1.25em; }
 

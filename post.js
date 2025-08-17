@@ -26,9 +26,9 @@ function updateThemeToggle(theme) {
 const skip = document.querySelector('.skip-link');
 if (skip) {
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 0) skip.classList.add('hidden');
+    if (window.scrollY > 0) skip.classList.remove('show');
   }, { once: true });
-  skip.addEventListener('click', () => skip.classList.add('hidden'));
+  skip.addEventListener('click', () => skip.classList.remove('show'));
 }
 
 const params = new URLSearchParams(window.location.search);
