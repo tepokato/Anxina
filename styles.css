@@ -197,7 +197,7 @@ header.site-header {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--panel);
+  background-color: #E9EFEC;
   transition: .4s;
   border-radius: 1.875em;
 }
@@ -221,7 +221,7 @@ header.site-header {
 
 .switch input:checked + .slider:before {
   left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
-  background: #303136;
+  background: #16423C;
   /* change the value of second inset in box-shadow to change the angle and direction of the moon */
   box-shadow: inset -0.1875em -0.125em 0.3125em -0.125em #8983f7, inset -0.625em -0.25em 0 0 #a3dafb;
 }
