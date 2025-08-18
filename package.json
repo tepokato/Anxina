@@ -2,18 +2,10 @@
   "name": "anxina",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "node --check server.js"
+    "test": "echo \"No tests\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "axios": "^1.11.0",
-    "dotenv": "^17.2.1",
-    "express": "^5.1.0"
-  }
+  "license": "ISC"
 }
