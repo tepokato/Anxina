@@ -12,7 +12,7 @@ let articles = [];
 
 const articlesEl = document.getElementById('articles');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
-const RSS_FEED = 'https://www.blogger.com/feeds/4840049977445065362/posts/default?alt=rss';
+const RSS_FEED = '/.netlify/functions/rss';
 
 async function loadArticles() {
   try {
