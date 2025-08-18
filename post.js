@@ -38,6 +38,9 @@ const titleEl = document.getElementById('post-title');
 const metaEl = document.getElementById('post-meta');
 const contentEl = document.getElementById('post-content');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
+const RSS_FEED = 'https://www.blogger.com/feeds/4840049977445065362/posts/default?alt=rss';
+
+let articles = [];
 
 function formatDate(iso) {
   try {
@@ -67,20 +70,45 @@ async function loadPost() {
     titleEl.textContent = 'Artículo no encontrado';
     return;
   }
-  const url = `/api/posts/${id}`;
   try {
-    const res = await fetch(url);
+    const res = await fetch(RSS_FEED);
     if (!res.ok) throw new Error(res.statusText);
-    const data = await res.json();
-    titleEl.textContent = data.title || '';
-    document.title = data.title || '';
-    const text = stripHtml(data.content || '');
-    const meta = [data.author && data.author.displayName, formatDate(data.published), estimateReadingTime(text)].filter(Boolean).join(' • ');
+    const text = await res.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, 'application/xml');
+    const items = Array.from(xml.querySelectorAll('item'));
+    articles = items.map(item => {
+      const content = item.querySelector('content\\:encoded')?.textContent || '';
+      const textContent = stripHtml(content);
+      const div = document.createElement('div');
+      div.innerHTML = content;
+      const categories = Array.from(item.querySelectorAll('category')).map(c => c.textContent);
+      return {
+        id: item.querySelector('guid')?.textContent || '',
+        titulo: item.querySelector('title')?.textContent || '',
+        resumen: textContent.slice(0, 160) + (textContent.length > 160 ? '…' : ''),
+        categoria: categories[0] || 'General',
+        etiquetas: categories.slice(1),
+        fecha: item.querySelector('pubDate') ? new Date(item.querySelector('pubDate').textContent).toISOString().split('T')[0] : '',
+        lectura: estimateReadingTime(textContent),
+        autor: item.querySelector('dc\\:creator')?.textContent || '',
+        imagen: div.querySelector('img') ? div.querySelector('img').src : fallbackImage,
+        contenido: content
+      };
+    });
+    const post = articles.find(p => p.id === id);
+    if (!post) {
+      titleEl.textContent = 'Artículo no encontrado';
+      return;
+    }
+    titleEl.textContent = post.titulo;
+    document.title = post.titulo;
+    const meta = [post.autor, formatDate(post.fecha), estimateReadingTime(stripHtml(post.contenido))].filter(Boolean).join(' • ');
     metaEl.textContent = meta;
-    contentEl.innerHTML = data.content || '';
+    contentEl.innerHTML = post.contenido;
     contentEl.querySelectorAll('img').forEach(img => {
       if (!img.alt || img.alt.trim() === '') {
-        img.alt = data.title || '';
+        img.alt = post.titulo;
       }
     });
   } catch (err) {
@@ -90,8 +118,6 @@ async function loadPost() {
 }
 
 loadPost();
-
-let articles = [];
 
 const q = document.getElementById('q');
 const searchWrap = document.querySelector('.search');

@@ -40,27 +40,32 @@ const params = new URLSearchParams(window.location.search);
 const initialTerm = (params.get('q') || '').trim();
 const q = document.getElementById('q');
 if (q && initialTerm) q.value = initialTerm;
+const RSS_FEED = 'https://www.blogger.com/feeds/4840049977445065362/posts/default?alt=rss';
 
 async function loadArticles() {
-  const url = '/api/posts';
   try {
-    const res = await fetch(url);
+    const res = await fetch(RSS_FEED);
     if (!res.ok) throw new Error(res.statusText);
-    const data = await res.json();
-    articles = (data.items || []).map(item => {
-      const text = stripHtml(item.content || '');
+    const text = await res.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, 'application/xml');
+    const items = Array.from(xml.querySelectorAll('item'));
+    articles = items.map(item => {
+      const content = item.querySelector('content\\:encoded')?.textContent || '';
+      const textContent = stripHtml(content);
       const div = document.createElement('div');
-      div.innerHTML = item.content || '';
+      div.innerHTML = content;
       const img = div.querySelector('img');
+      const categories = Array.from(item.querySelectorAll('category')).map(c => c.textContent);
       return {
-        id: item.id,
-        titulo: item.title || '',
-        resumen: text.slice(0, 160) + (text.length > 160 ? '…' : ''),
-        categoria: (item.labels && item.labels[0]) || 'General',
-        etiquetas: item.labels ? item.labels.slice(1) : [],
-        fecha: item.published ? item.published.split('T')[0] : '',
-        lectura: estimateReadingTime(text),
-        autor: item.author && item.author.displayName,
+        id: item.querySelector('guid')?.textContent || '',
+        titulo: item.querySelector('title')?.textContent || '',
+        resumen: textContent.slice(0, 160) + (textContent.length > 160 ? '…' : ''),
+        categoria: categories[0] || 'General',
+        etiquetas: categories.slice(1),
+        fecha: item.querySelector('pubDate') ? new Date(item.querySelector('pubDate').textContent).toISOString().split('T')[0] : '',
+        lectura: estimateReadingTime(textContent),
+        autor: item.querySelector('dc\\:creator')?.textContent || '',
         imagen: img ? img.src : fallbackImage
       };
     });
