@@ -33,8 +33,6 @@ if (skip) {
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
-const blogId = '4840049977445065362';
-const apiKey = 'AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA';
 
 const titleEl = document.getElementById('post-title');
 const metaEl = document.getElementById('post-meta');
@@ -69,7 +67,7 @@ async function loadPost() {
     titleEl.textContent = 'Artículo no encontrado';
     return;
   }
-  const url = `https://www.googleapis.com/blogger/v3/blogs/${blogId}/posts/${id}?key=${apiKey}`;
+  const url = `/api/posts/${id}`;
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.statusText);
