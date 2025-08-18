@@ -17,32 +17,60 @@ const params = new URLSearchParams(window.location.search);
 const initialTerm = (params.get('q') || '').trim();
 const q = document.getElementById('q');
 if (q && initialTerm) q.value = initialTerm;
-const RSS_FEED = '/.netlify/functions/rss';
+const BLOGGER_API = '/.netlify/functions/blogger';
+const CACHE_KEY = 'bloggerData';
+const CACHE_TIME_KEY = 'bloggerDataTime';
+const CACHE_MS = 60000;
+
+function getCachedData() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+async function updateCache() {
+  const res = await fetch(BLOGGER_API);
+  if (!res.ok) throw new Error(res.statusText);
+  const data = await res.json();
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+  } catch (e) {}
+  return data;
+}
+
+async function fetchPosts() {
+  const storedTime = parseInt(localStorage.getItem(CACHE_TIME_KEY), 10);
+  if (storedTime && Date.now() - storedTime < CACHE_MS) {
+    const cached = getCachedData();
+    if (cached) return cached;
+  }
+  return updateCache();
+}
 
 async function loadArticles() {
   try {
-    const res = await fetch(RSS_FEED);
-    if (!res.ok) throw new Error(res.statusText);
-    const text = await res.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, 'application/xml');
-    const items = Array.from(xml.querySelectorAll('item'));
+    const data = await fetchPosts();
+    const items = Array.from(data.items || []);
     articles = items.map(item => {
-      const content = item.querySelector('content\\:encoded')?.textContent || '';
+      const content = item.content || '';
       const textContent = stripHtml(content);
       const div = document.createElement('div');
       div.innerHTML = content;
       const img = div.querySelector('img');
-      const categories = Array.from(item.querySelectorAll('category')).map(c => c.textContent);
+      const labels = item.labels || [];
       return {
-        id: item.querySelector('guid')?.textContent || '',
-        titulo: item.querySelector('title')?.textContent || '',
+        id: item.id || '',
+        titulo: item.title || '',
         resumen: textContent.slice(0, 160) + (textContent.length > 160 ? '…' : ''),
-        categoria: categories[0] || 'General',
-        etiquetas: categories.slice(1),
-        fecha: item.querySelector('pubDate') ? new Date(item.querySelector('pubDate').textContent).toISOString().split('T')[0] : '',
+        categoria: labels[0] || 'General',
+        etiquetas: labels.slice(1),
+        fecha: item.published ? new Date(item.published).toISOString().split('T')[0] : '',
         lectura: estimateReadingTime(textContent),
-        autor: item.querySelector('dc\\:creator')?.textContent || '',
+        autor: item.author?.displayName || '',
         imagen: img ? img.src : fallbackImage
       };
     });
@@ -111,6 +139,7 @@ function estimateReadingTime(text) {
 }
 
 loadArticles();
+setInterval(updateCache, CACHE_MS);
 
 const links = document.querySelectorAll('.nav-links [data-filter]');
 links.forEach(link => link.addEventListener('click', (e) => {

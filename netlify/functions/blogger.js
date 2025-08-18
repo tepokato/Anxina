@@ -1,23 +1,26 @@
 exports.handler = async function(event, context) {
   try {
-    const response = await fetch('https://www.blogger.com/feeds/4840049977445065362/posts/default?alt=rss');
+    const apiKey = process.env.BLOGGER_API_KEY;
+    const blogId = process.env.BLOGGER_BLOG_ID;
+    const url = `https://www.googleapis.com/blogger/v3/blogs/${blogId}/posts?key=${apiKey}`;
+    const response = await fetch(url);
     if (!response.ok) {
       return {
         statusCode: response.status,
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Cache-Control': 'max-age=300'
+          'Cache-Control': 'max-age=60'
         },
-        body: `Error fetching feed: ${response.statusText}`
+        body: `Error fetching posts: ${response.statusText}`
       };
     }
     const body = await response.text();
     return {
       statusCode: 200,
       headers: {
-        'Content-Type': 'application/rss+xml',
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'max-age=300'
+        'Cache-Control': 'max-age=60'
       },
       body
     };
@@ -26,7 +29,7 @@ exports.handler = async function(event, context) {
       statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Cache-Control': 'max-age=300'
+        'Cache-Control': 'max-age=60'
       },
       body: 'Internal server error'
     };
