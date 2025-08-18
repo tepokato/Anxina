@@ -46,7 +46,7 @@ a:hover { text-decoration: underline; }
 
 .skip-link {
   position: fixed;
-  top: 1.25em;
+  top: calc(4em + 1.25em); /* position below sticky header */
   left: 1.25em;
   z-index: 1000;
   display: inline-flex;
