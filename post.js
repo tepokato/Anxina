@@ -172,6 +172,16 @@ links.forEach(link => link.addEventListener('click', (e) => {
 const q = document.getElementById('q');
 const searchWrap = document.querySelector('.search');
 const searchBtn = document.getElementById('searchBtn');
+const suggestionsEl = document.getElementById('searchSuggestions');
+
+if (suggestionsEl) {
+  suggestionsEl.addEventListener('click', e => {
+    const li = e.target.closest('li');
+    if (li && li.dataset.id) {
+      window.location.href = `post.html?id=${li.dataset.id}`;
+    }
+  });
+}
 
 searchBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -187,6 +197,7 @@ document.addEventListener('click', e => {
     searchWrap.classList.remove('active');
     q.hidden = true;
     searchBtn.setAttribute('aria-expanded', 'false');
+    if (suggestionsEl) suggestionsEl.innerHTML = '';
   }
 });
 
@@ -194,6 +205,7 @@ q.addEventListener('search', () => {
   searchWrap.classList.remove('active');
   q.hidden = true;
   searchBtn.setAttribute('aria-expanded', 'false');
+  if (suggestionsEl) suggestionsEl.innerHTML = '';
 });
 
 q.addEventListener('input', () => {
@@ -206,6 +218,17 @@ q.addEventListener('input', () => {
     : pool.filter(a =>
         (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term)
       );
+  if (suggestionsEl) {
+    suggestionsEl.innerHTML = '';
+    if (term) {
+      results.slice(0,5).forEach(a => {
+        const li = document.createElement('li');
+        li.textContent = a.titulo;
+        li.dataset.id = a.id;
+        suggestionsEl.appendChild(li);
+      });
+    }
+  }
   if (!results.length) {
     searchSection.hidden = false;
     articlesEl.innerHTML = '<p>No se encontraron coincidencias.</p>';
