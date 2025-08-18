@@ -200,6 +200,7 @@ searchBtn.addEventListener('click', e => {
   const active = searchWrap.classList.contains('active');
   q.hidden = !active;
   searchBtn.setAttribute('aria-expanded', active);
+  if (!active && suggestionsEl) suggestionsEl.innerHTML = '';
   if (!q.hidden) q.focus();
 });
 
