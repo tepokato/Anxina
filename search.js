@@ -17,7 +17,7 @@ const params = new URLSearchParams(window.location.search);
 const initialTerm = (params.get('q') || '').trim();
 const q = document.getElementById('q');
 if (q && initialTerm) q.value = initialTerm;
-const RSS_FEED = 'https://www.blogger.com/feeds/4840049977445065362/posts/default?alt=rss';
+const RSS_FEED = '/.netlify/functions/rss';
 
 async function loadArticles() {
   try {
