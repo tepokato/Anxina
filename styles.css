@@ -248,8 +248,8 @@ header.site-header {
 }
 .theme__icon {
   display: block;
-  top: 0.5em;
-  left: 0.5em;
+  top: calc(50% - 0.75em);
+  left: calc(50% - 0.75em);
   width: 1.5em;
   height: 1.5em;
 }
