@@ -38,10 +38,12 @@
 
       <div class="actions">
         <div class="search">
-          <button id="searchBtn" class="search-button" aria-label="Buscar" aria-expanded="false">
-            <i class="bi bi-search"></i>
-          </button>
-          <input id="q" class="search-input" type="search" placeholder="Buscar en el sitio…" autocomplete="off" hidden aria-label="Buscar en el sitio" />
+          <form id="searchForm" action="search.html">
+            <button id="searchBtn" class="search-button" aria-label="Buscar" aria-expanded="false">
+              <i class="bi bi-search"></i>
+            </button>
+            <input id="q" class="search-input" type="search" placeholder="Buscar en el sitio…" autocomplete="off" hidden aria-label="Buscar en el sitio" />
+          </form>
           <ul id="searchSuggestions" class="suggestions"></ul>
         </div>
         <label class="theme-switch">

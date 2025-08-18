@@ -173,12 +173,23 @@ const q = document.getElementById('q');
 const searchWrap = document.querySelector('.search');
 const searchBtn = document.getElementById('searchBtn');
 const suggestionsEl = document.getElementById('searchSuggestions');
+const searchForm = document.getElementById('searchForm');
 
 if (suggestionsEl) {
   suggestionsEl.addEventListener('click', e => {
     const li = e.target.closest('li');
     if (li && li.dataset.id) {
       window.location.href = `post.html?id=${li.dataset.id}`;
+    }
+  });
+}
+
+if (searchForm) {
+  searchForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const term = q.value.trim();
+    if (term) {
+      window.location.href = `search.html?q=${encodeURIComponent(term)}`;
     }
   });
 }
@@ -213,11 +224,11 @@ q.addEventListener('input', () => {
   const current = document.querySelector('.nav-links [aria-current="page"]');
   const base = current ? current.getAttribute('data-filter') : 'todas';
   const pool = base === 'todas' ? articles : articles.filter(a => a.categoria === base);
-  const results = !term
-    ? pool
-    : pool.filter(a =>
+  const results = term
+    ? pool.filter(a =>
         (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term)
-      );
+      )
+    : [];
   if (suggestionsEl) {
     suggestionsEl.innerHTML = '';
     if (term) {
@@ -228,12 +239,6 @@ q.addEventListener('input', () => {
         suggestionsEl.appendChild(li);
       });
     }
-  }
-  if (!results.length) {
-    searchSection.hidden = false;
-    articlesEl.innerHTML = '<p>No se encontraron coincidencias.</p>';
-  } else {
-    renderArticles(results);
   }
 });
 
