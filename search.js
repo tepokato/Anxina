@@ -42,7 +42,7 @@ const q = document.getElementById('q');
 if (q && initialTerm) q.value = initialTerm;
 
 async function loadArticles() {
-  const url = `https://www.googleapis.com/blogger/v3/blogs/4840049977445065362/posts?key=AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA`;
+  const url = '/api/posts';
   try {
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.statusText);
