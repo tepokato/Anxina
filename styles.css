@@ -349,6 +349,22 @@ header.site-header {
   box-shadow: var(--shadow);
 }
 
+#post {
+  max-width: 65ch;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+#post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.5em;
+}
+
 .newsletter {
   display: grid;
   gap: 0.75em;
