@@ -39,7 +39,6 @@
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 </head>
 <body>
   <a href="#contenido" class="skip-link show" aria-label="Saltar al contenido">
@@ -74,17 +73,23 @@
           </form>
           <ul id="searchSuggestions" class="suggestions"></ul>
         </div>
-        <label class="theme-switch">
-          <input id="themeToggle" class="toggle-checkbox" type="checkbox" aria-label="Cambiar a modo oscuro" />
-          <div class="toggle-slot">
-            <div class="sun-icon-wrapper">
-              <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false"></div>
-            </div>
-            <div class="toggle-button"></div>
-            <div class="moon-icon-wrapper">
-              <div class="iconify moon-icon" data-icon="feather-moon" data-inline="false"></div>
-            </div>
-          </div>
+        <!-- From Uiverse.io by JkHuger -->
+        <label for="themeToggle" class="theme">
+          <span class="theme__toggle-wrap">
+            <input id="themeToggle" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark" aria-label="Cambiar a modo oscuro" />
+            <span class="theme__fill"></span>
+            <span class="theme__icon">
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+              <span class="theme__icon-part"></span>
+            </span>
+          </span>
         </label>
       </div>
     </div>
