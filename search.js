@@ -34,7 +34,12 @@ if (skip) {
 let articles = [];
 
 const articlesEl = document.getElementById('articles');
+const resultsMsg = document.getElementById('resultsMsg');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
+const params = new URLSearchParams(window.location.search);
+const initialTerm = (params.get('q') || '').trim();
+const q = document.getElementById('q');
+if (q && initialTerm) q.value = initialTerm;
 
 async function loadArticles() {
   const url = `https://www.googleapis.com/blogger/v3/blogs/4840049977445065362/posts?key=AIzaSyCD9Zu57Qrr7ExMkxXYl0KAbqVTS8ox-PA`;
@@ -42,7 +47,7 @@ async function loadArticles() {
     const res = await fetch(url);
     if (!res.ok) throw new Error(res.statusText);
     const data = await res.json();
-    const mapped = (data.items || []).map(item => {
+    articles = (data.items || []).map(item => {
       const text = stripHtml(item.content || '');
       const div = document.createElement('div');
       div.innerHTML = item.content || '';
@@ -59,12 +64,26 @@ async function loadArticles() {
         imagen: img ? img.src : fallbackImage
       };
     });
-    renderHero(mapped);
-    articles = mapped.slice(4);
-    renderArticles(articles);
+    performSearch();
   } catch (err) {
     console.error('Error al cargar artículos', err);
     articlesEl.innerHTML = '<p>No se pudieron cargar los artículos.</p>';
+  }
+}
+
+function performSearch() {
+  const term = initialTerm.toLowerCase();
+  const results = term
+    ? articles.filter(a =>
+        (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term)
+      )
+    : [];
+  if (!results.length) {
+    resultsMsg.hidden = false;
+    articlesEl.innerHTML = '';
+  } else {
+    resultsMsg.hidden = true;
+    renderArticles(results);
   }
 }
 
@@ -88,41 +107,6 @@ function renderArticles(list) {
     `;
     link.appendChild(el);
     articlesEl.appendChild(link);
-  });
-}
-
-function renderHero(list) {
-  const heroEl = document.getElementById('hero');
-  const miniListEl = document.getElementById('mini-list');
-  if (!heroEl || !miniListEl || !list.length) return;
-
-  const [first, ...rest] = list;
-  heroEl.innerHTML = `
-    <a href="post.html?id=${first.id}">
-      <figure class="thumb" aria-hidden="true"><img src="${first.imagen || fallbackImage}" alt="${first.titulo}"></figure>
-      <div class="pad">
-        <span class="kicker">${first.categoria}</span>
-        <h1 class="title-xl" id="destacados">${first.titulo}</h1>
-        <p>${first.resumen}</p>
-        <div class="meta"><span>${formatDate(first.fecha)}</span><span>•</span><span>${first.lectura}</span>${first.autor ? `<span>•</span><span>${first.autor}</span>` : ''}</div>
-      </div>
-    </a>
-  `;
-
-  miniListEl.innerHTML = '';
-  rest.slice(0,3).forEach(a => {
-    const link = document.createElement('a');
-    link.href = `post.html?id=${a.id}`;
-    link.className = 'mini';
-    link.innerHTML = `
-      <figure class="thumb" aria-hidden="true"><img src="${a.imagen || fallbackImage}" alt="${a.titulo}" loading="lazy"></figure>
-      <div class="pad">
-        <span class="kicker">${a.categoria}</span>
-        <h3>${a.titulo}</h3>
-        <div class="meta"><span>${formatDate(a.fecha)}</span><span>•</span><span>${a.lectura}</span>${a.autor ? `<span>•</span><span>${a.autor}</span>` : ''}</div>
-      </div>
-    `;
-    miniListEl.appendChild(link);
   });
 }
 
@@ -152,11 +136,16 @@ links.forEach(link => link.addEventListener('click', (e) => {
   const f = link.getAttribute('data-filter');
   links.forEach(l => l.removeAttribute('aria-current'));
   link.setAttribute('aria-current', 'page');
-  if (f === 'todas') { renderArticles(articles); return; }
-  renderArticles(articles.filter(a => a.categoria === f));
+  const results = f === 'todas' ? articles : articles.filter(a => a.categoria === f);
+  if (!results.length) {
+    resultsMsg.hidden = false;
+    articlesEl.innerHTML = '';
+  } else {
+    resultsMsg.hidden = true;
+    renderArticles(results);
+  }
 }));
 
-const q = document.getElementById('q');
 const searchWrap = document.querySelector('.search');
 const searchBtn = document.getElementById('searchBtn');
 const suggestionsEl = document.getElementById('searchSuggestions');
@@ -270,3 +259,4 @@ if (backToTop) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
