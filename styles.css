@@ -142,6 +142,12 @@ header.site-header {
   position: relative;
 }
 
+.search form {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
 .search-button {
   display: flex;
   align-items: center;
