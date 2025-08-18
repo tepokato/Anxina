@@ -136,6 +136,7 @@ header.site-header {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  position: relative;
 }
 
 .search-button {
@@ -184,6 +185,35 @@ header.site-header {
 .search.active .search-input {
   width: 11.875em;
   opacity: 1;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--panel);
+  border: 0.0625em solid var(--border);
+  border-radius: 0.75em;
+  margin-top: 0.25em;
+  list-style: none;
+  padding: 0;
+  max-height: 15em;
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.suggestions:empty { display: none; }
+
+.suggestions li {
+  padding: 0.5em 0.75em;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background: var(--border);
+  color: var(--text);
 }
 
 /* Theme toggle switch */
@@ -521,7 +551,7 @@ footer {
   .hero { grid-template-columns: 1fr; }
   .grid { grid-template-columns: repeat(2, 1fr); }
   .nav { gap: 0.625em; }
-  .search { min-width: 0; flex: 1; }
+  .search { min-width: 0; flex: 1; position: relative; }
 }
 @media (max-width: 40em) {
   .grid { grid-template-columns: 1fr; }
