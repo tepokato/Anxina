@@ -201,6 +201,8 @@ document.addEventListener('click', e => {
 });
 
 q.addEventListener('search', () => {
+  const term = q.value.trim();
+  if (term) window.location.href = `search.html?q=${encodeURIComponent(term)}`;
   searchWrap.classList.remove('active');
   q.hidden = true;
   searchBtn.setAttribute('aria-expanded', 'false');
