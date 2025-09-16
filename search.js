@@ -131,20 +131,45 @@ function createSummary(text, limit = 160) {
   return cleaned.length > limit ? cleaned.slice(0, limit).trimEnd() + '…' : cleaned;
 }
 
-function extractTermNames(termGroups, taxonomy) {
+function slugifyTerm(value) {
+  return (value || '')
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+function extractTerms(termGroups, taxonomy) {
   if (!Array.isArray(termGroups)) return [];
-  const names = [];
+  const terms = [];
   termGroups.forEach(group => {
     if (Array.isArray(group)) {
       group.forEach(term => {
         if (term && term.taxonomy === taxonomy) {
-          const clean = stripHtml(term.name || '').trim();
-          if (clean) names.push(clean);
+          const name = stripHtml(term.name || '').trim();
+          const rawSlug = typeof term.slug === 'string' ? term.slug.trim() : '';
+          const slug = rawSlug ? slugifyTerm(rawSlug) : slugifyTerm(name);
+          if (name || slug) {
+            terms.push({ name, slug });
+          }
         }
       });
     }
   });
-  return names;
+  return terms;
+}
+
+function collectTermStrings(...lists) {
+  const set = new Set();
+  lists.forEach(list => {
+    list.forEach(({ name, slug }) => {
+      if (name) set.add(name);
+      if (slug) set.add(slug);
+    });
+  });
+  return Array.from(set);
 }
 
 function estimateReadingTime(text) {
@@ -166,8 +191,14 @@ function mapWordPressPost(post) {
   const resumen = createSummary(summarySource);
 
   const termGroups = post?._embedded?.['wp:term'] || [];
-  const categories = extractTermNames(termGroups, 'category');
-  const tags = extractTermNames(termGroups, 'post_tag');
+  const categories = extractTerms(termGroups, 'category');
+  const tags = extractTerms(termGroups, 'post_tag');
+  const primaryCategory = categories[0] || null;
+  const categoria = primaryCategory?.name || 'General';
+  const categoriaSlug = primaryCategory?.slug || slugifyTerm(categoria) || 'general';
+  const termStrings = new Set(collectTermStrings(categories, tags));
+  if (categoria) termStrings.add(categoria);
+  if (categoriaSlug) termStrings.add(categoriaSlug);
 
   const featured = post?._embedded?.['wp:featuredmedia']?.[0];
   const image = featured?.source_url || featured?.media_details?.sizes?.medium?.source_url || '';
@@ -179,8 +210,9 @@ function mapWordPressPost(post) {
     id: String(post.id),
     titulo: title,
     resumen,
-    categoria: categories[0] || 'General',
-    etiquetas: [...categories.slice(1), ...tags],
+    categoria,
+    categoriaSlug,
+    etiquetas: Array.from(termStrings),
     fecha,
     lectura: estimateReadingTime(readingSource),
     autor,
@@ -189,16 +221,36 @@ function mapWordPressPost(post) {
   };
 }
 
+function matchesCategory(article, filter) {
+  if (!article || !filter) return false;
+  const normalized = filter.toLowerCase();
+  const slugFilter = slugifyTerm(filter);
+  const slug = (article.categoriaSlug || '').toLowerCase();
+  const name = (article.categoria || '').toLowerCase();
+  const nameSlug = slugifyTerm(article.categoria || '');
+  return (
+    (slug && (slug === normalized || slug === slugFilter)) ||
+    (name && (name === normalized || name === slugFilter)) ||
+    (nameSlug && (nameSlug === normalized || nameSlug === slugFilter))
+  );
+}
+
+function filterArticlesByCategory(filterValue, list = articles) {
+  if (!Array.isArray(list)) return [];
+  if (!filterValue || filterValue === 'todas') return list.slice();
+  return list.filter(article => matchesCategory(article, filterValue));
+}
+
 loadArticles();
 setInterval(updateCache, CACHE_MS);
 
 const links = document.querySelectorAll('.nav-links [data-filter]');
 links.forEach(link => link.addEventListener('click', (e) => {
   e.preventDefault();
-  const f = link.getAttribute('data-filter');
+  const f = link.getAttribute('data-filter') || 'todas';
   links.forEach(l => l.removeAttribute('aria-current'));
   link.setAttribute('aria-current', 'page');
-  const results = f === 'todas' ? articles : articles.filter(a => a.categoria === f);
+  const results = filterArticlesByCategory(f);
   if (!results.length) {
     resultsMsg.hidden = false;
     articlesEl.innerHTML = '';
@@ -264,7 +316,7 @@ q.addEventListener('input', () => {
   const term = q.value.trim().toLowerCase();
   const current = document.querySelector('.nav-links [aria-current="page"]');
   const base = current ? current.getAttribute('data-filter') : 'todas';
-  const pool = base === 'todas' ? articles : articles.filter(a => a.categoria === base);
+  const pool = filterArticlesByCategory(base);
   const results = term
     ? pool.filter(a =>
         (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term)
