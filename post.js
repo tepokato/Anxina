@@ -15,7 +15,10 @@ const titleEl = document.getElementById('post-title');
 const metaEl = document.getElementById('post-meta');
 const contentEl = document.getElementById('post-content');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
-const WP_API = '/.netlify/functions/wordpress';
+const { apiUrl = '/.netlify/functions/wordpress', username, password } = window.WP_CONFIG || {};
+const authOptions = username ? {
+  headers: { Authorization: `Basic ${btoa(`${username}:${password ?? ''}`)}` }
+} : undefined;
 const WP_CACHE_KEY = 'wordpressData';
 const WP_CACHE_TIME_KEY = 'wordpressDataTime';
 const CACHE_MS = 60000;
@@ -30,7 +33,7 @@ function getCachedData() {
 }
 
 async function updateCache() {
-  const res = await fetch(WP_API);
+  const res = await fetch(apiUrl, authOptions);
   if (!res.ok) throw new Error(res.statusText);
   const data = await res.json();
   try {
