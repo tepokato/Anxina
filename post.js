@@ -15,14 +15,14 @@ const titleEl = document.getElementById('post-title');
 const metaEl = document.getElementById('post-meta');
 const contentEl = document.getElementById('post-content');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
-const BLOGGER_API = '/.netlify/functions/blogger';
-const CACHE_KEY = 'bloggerData';
-const CACHE_TIME_KEY = 'bloggerDataTime';
+const WP_API = '/.netlify/functions/wordpress';
+const WP_CACHE_KEY = 'wordpressData';
+const WP_CACHE_TIME_KEY = 'wordpressDataTime';
 const CACHE_MS = 60000;
 
 function getCachedData() {
   try {
-    const raw = localStorage.getItem(CACHE_KEY);
+    const raw = localStorage.getItem(WP_CACHE_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch (e) {
     return null;
@@ -30,18 +30,18 @@ function getCachedData() {
 }
 
 async function updateCache() {
-  const res = await fetch(BLOGGER_API);
+  const res = await fetch(WP_API);
   if (!res.ok) throw new Error(res.statusText);
   const data = await res.json();
   try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
-    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+    localStorage.setItem(WP_CACHE_KEY, JSON.stringify(data));
+    localStorage.setItem(WP_CACHE_TIME_KEY, String(Date.now()));
   } catch (e) {}
   return data;
 }
 
 async function fetchPosts() {
-  const storedTime = parseInt(localStorage.getItem(CACHE_TIME_KEY), 10);
+  const storedTime = parseInt(localStorage.getItem(WP_CACHE_TIME_KEY), 10);
   if (storedTime && Date.now() - storedTime < CACHE_MS) {
     const cached = getCachedData();
     if (cached) return cached;
