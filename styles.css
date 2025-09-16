@@ -109,6 +109,31 @@ header.site-header {
 .chip[aria-current="page"] { color: var(--text); border-color: var(--accent); }
 
 .actions { display: flex; align-items: center; gap: 0.75em; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em 1.25em;
+  border: none;
+  border-radius: 0.75em;
+  font-weight: 700;
+  color: #E9EFEC;
+  background: linear-gradient(270deg, #16423C, #6A9C89);
+  background-size: 600% 600%;
+  animation: gradientMove 8s ease infinite;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover,
+.btn:active {
+  background: linear-gradient(270deg, #6A9C89, #C4DAD2);
+  transform: translateY(-0.125em);
+  box-shadow: 0 0.25em 0.75em rgba(0,0,0,.3);
+}
+.btn:focus {
+  outline: 0.125em solid #E9EFEC;
+  outline-offset: 0.125em;
+}
 
 .search {
   display: flex;
@@ -435,8 +460,21 @@ header.site-header {
 .cookie-banner p {
   margin: 0;
 }
+.cookie-btn {
+  justify-self: end;
+  padding: 0.5em 1em;
+  background: var(--accent);
+  color: var(--light);
+  border: none;
+  border-radius: 0.75em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cookie-btn:focus {
+  outline: 0.125em solid var(--accent-2);
+}
 [data-theme="dark"] .cookie-icon,
-[data-theme="dark"] #cookie-accept { color: var(--bg); }
+[data-theme="dark"] .cookie-btn { color: var(--bg); }
 
 footer {
   background: rgba(var(--panel-rgb), 0.7);
