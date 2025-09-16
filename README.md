@@ -27,6 +27,23 @@ These variables are optional unless you wire the Blogger endpoint into the UI.
 2. Set the required environment variables for your local Netlify environment. You can use `netlify env:set WP_BASE_URL https://example.com` (and the optional auth variables) so `netlify dev` can inject them when serving functions.
 3. Start the development server: `netlify dev`. This serves the static front-end from the project root and proxies calls to the serverless functions.
 
+### Running without Netlify functions
+The front-end can also talk directly to the WordPress REST API without relying on Netlify. This is useful when you just want to edit the UI locally or when the API already exposes public data.
+
+1. Copy the sample `wp-config.js` file and update it with your WordPress endpoint:
+
+   ```js
+   window.WP_CONFIG = {
+     apiUrl: 'https://your-wordpress-site.com/wp-json/wp/v2/posts?_embed=1',
+     username: 'optional_user',
+     password: 'optional_password'
+   };
+   ```
+
+   The credentials are optional. If you do not need Basic Auth or WordPress Application Passwords, leave both fields empty. The file is listed in `.gitignore` so you can safely store local credentials without committing them.
+2. Serve the site with any static file server. For example, install [serve](https://www.npmjs.com/package/serve) and run `npx serve .`, or use the static server that ships with your editor.
+3. Open the reported URL (typically `http://localhost:3000`) and the pages (`index.html`, `post.html`, `search.html`) will use your configuration when fetching posts.
+
 ## Deploying to Netlify
 Netlify automatically bundles any functions stored in `netlify/functions/*.js`. To deploy this repository:
 
