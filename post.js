@@ -60,18 +60,78 @@ function formatDate(iso) {
 
 function stripHtml(html) {
   const div = document.createElement('div');
-  div.innerHTML = html;
+  div.innerHTML = html || '';
   return div.textContent || div.innerText || '';
 }
 
+function createSummary(text, limit = 160) {
+  const cleaned = (text || '').trim();
+  if (!cleaned) return '';
+  return cleaned.length > limit ? cleaned.slice(0, limit).trimEnd() + '…' : cleaned;
+}
+
+function extractTermNames(termGroups, taxonomy) {
+  if (!Array.isArray(termGroups)) return [];
+  const names = [];
+  termGroups.forEach(group => {
+    if (Array.isArray(group)) {
+      group.forEach(term => {
+        if (term && term.taxonomy === taxonomy) {
+          const clean = stripHtml(term.name || '').trim();
+          if (clean) names.push(clean);
+        }
+      });
+    }
+  });
+  return names;
+}
+
 function estimateReadingTime(text) {
-  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 200)) + ' min de lectura';
 }
 
 function estimateReadingTimeShort(text) {
-  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(words / 200)) + ' min';
+}
+
+function mapWordPressPost(post) {
+  if (!post || typeof post !== 'object' || !post.id) return null;
+
+  const contentHtml = post?.content?.rendered || '';
+  const excerptHtml = post?.excerpt?.rendered || '';
+  const titleHtml = post?.title?.rendered || '';
+
+  const contentText = stripHtml(contentHtml).trim();
+  const excerptText = stripHtml(excerptHtml).trim();
+  const title = stripHtml(titleHtml).trim() || 'Sin título';
+  const summarySource = excerptText || contentText || title;
+  const resumen = createSummary(summarySource);
+
+  const termGroups = post?._embedded?.['wp:term'] || [];
+  const categories = extractTermNames(termGroups, 'category');
+  const tags = extractTermNames(termGroups, 'post_tag');
+
+  const featured = post?._embedded?.['wp:featuredmedia']?.[0];
+  const image = featured?.source_url || featured?.media_details?.sizes?.medium?.source_url || '';
+  const author = stripHtml(post?._embedded?.author?.[0]?.name || '').trim();
+  const fecha = post?.date || '';
+  const readingSource = contentText || excerptText || title;
+
+  return {
+    id: String(post.id),
+    titulo: title,
+    resumen,
+    categoria: categories[0] || 'General',
+    etiquetas: [...categories.slice(1), ...tags],
+    fecha,
+    lectura: estimateReadingTime(readingSource),
+    lecturaCorta: estimateReadingTimeShort(readingSource),
+    autor,
+    imagen: image,
+    contenido: contentHtml
+  };
 }
 
 async function loadPost() {
@@ -81,26 +141,10 @@ async function loadPost() {
   }
   try {
     const data = await fetchPosts();
-    const items = Array.from(data.items || []);
-    articles = items.map(item => {
-      const content = item.content || '';
-      const textContent = stripHtml(content);
-      const div = document.createElement('div');
-      div.innerHTML = content;
-      const labels = item.labels || [];
-      return {
-        id: item.id || '',
-        titulo: item.title || '',
-        resumen: textContent.slice(0, 160) + (textContent.length > 160 ? '…' : ''),
-        categoria: labels[0] || 'General',
-        etiquetas: labels.slice(1),
-        fecha: item.published ? new Date(item.published).toISOString().split('T')[0] : '',
-        lectura: estimateReadingTime(textContent),
-        autor: item.author?.displayName || '',
-        imagen: div.querySelector('img') ? div.querySelector('img').src : fallbackImage,
-        contenido: content
-      };
-    });
+    const posts = Array.isArray(data) ? data : Array.from(data.items || []);
+    articles = posts
+      .map(mapWordPressPost)
+      .filter(Boolean);
     const post = articles.find(p => p.id === id);
     if (!post) {
       titleEl.textContent = 'Artículo no encontrado';

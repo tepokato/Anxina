@@ -13,7 +13,7 @@ exports.handler = async function(event, context) {
     }
 
     const normalizedBaseUrl = baseUrl.replace(/\/+$/, '');
-    const url = `${normalizedBaseUrl}/wp-json/wp/v2/posts`;
+    const url = `${normalizedBaseUrl}/wp-json/wp/v2/posts?_embed=1`;
     const response = await fetch(url);
 
     if (!response.ok) {
