@@ -1,5 +1,14 @@
 import('./utils/theme.js').then(({ initThemeToggle }) => initThemeToggle());
 
+let navControls = null;
+import('./utils/nav.js')
+  .then(({ initNavDisclosure }) => {
+    navControls = initNavDisclosure();
+  })
+  .catch(err => {
+    console.error('Error al inicializar el menú de navegación', err);
+  });
+
 const skip = document.querySelector('.skip-link');
 if (skip) {
   window.addEventListener('scroll', () => {
@@ -7,6 +16,11 @@ if (skip) {
   }, { once: true });
   skip.addEventListener('click', () => skip.classList.remove('show'));
 }
+
+const navLinks = document.querySelectorAll('.nav-links a');
+navLinks.forEach(link => link.addEventListener('click', () => {
+  if (navControls) navControls.close();
+}));
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');

@@ -1,5 +1,14 @@
 import('./utils/theme.js').then(({ initThemeToggle }) => initThemeToggle());
 
+let navControls = null;
+import('./utils/nav.js')
+  .then(({ initNavDisclosure }) => {
+    navControls = initNavDisclosure();
+  })
+  .catch(err => {
+    console.error('Error al inicializar el menú de navegación', err);
+  });
+
 const skip = document.querySelector('.skip-link');
 if (skip) {
   window.addEventListener('scroll', () => {
@@ -270,6 +279,7 @@ links.forEach(link => link.addEventListener('click', (e) => {
     resultsMsg.hidden = true;
     renderArticles(results);
   }
+  if (navControls) navControls.close();
 }));
 
 const searchWrap = document.querySelector('.search');
