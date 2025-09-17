@@ -15,12 +15,16 @@ const titleEl = document.getElementById('post-title');
 const metaEl = document.getElementById('post-meta');
 const contentEl = document.getElementById('post-content');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
-const defaultConfig = {
-  apiUrl: 'https://example.com/wp-json/wp/v2/posts?_embed=1',
-  username: '',
-  password: ''
-};
-const { apiUrl, username, password } = { ...defaultConfig, ...(window.WP_CONFIG || {}) };
+// Prefer the runtime configuration but fall back to a public WordPress REST endpoint
+// so the static build keeps working without Netlify Functions.
+const fallbackApiUrl = 'https://wordpress.org/news/wp-json/wp/v2/posts?_embed=1';
+const runtimeConfig = window.WP_CONFIG || {};
+const apiUrl = runtimeConfig.apiUrl || fallbackApiUrl;
+const username = runtimeConfig.username || '';
+const password = runtimeConfig.password || '';
+if (!runtimeConfig.apiUrl) {
+  console.warn('WP_CONFIG.apiUrl is not defined; using WordPress News API fallback.');
+}
 const authOptions = username ? {
   headers: { Authorization: `Basic ${btoa(`${username}:${password ?? ''}`)}` }
 } : undefined;
@@ -154,7 +158,7 @@ function mapWordPressPost(post) {
 
   const featured = post?._embedded?.['wp:featuredmedia']?.[0];
   const image = featured?.source_url || featured?.media_details?.sizes?.medium?.source_url || '';
-  const author = stripHtml(post?._embedded?.author?.[0]?.name || '').trim();
+  const autor = stripHtml(post?._embedded?.author?.[0]?.name || '').trim();
   const fecha = post?.date || '';
   const readingSource = contentText || excerptText || title;
 
