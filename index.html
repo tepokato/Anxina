@@ -56,7 +56,12 @@
         </span>
       </a>
 
-      <nav class="nav-links">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteFilters" aria-haspopup="true">
+        <i class="bi bi-funnel" aria-hidden="true"></i>
+        <span>Categorías</span>
+      </button>
+
+      <nav id="siteFilters" class="nav-links" aria-label="Categorías">
         <a class="chip" href="#" data-filter="tecnologia">Tecnología</a>
         <a class="chip" href="#" data-filter="ciencia">Ciencia</a>
         <a class="chip" href="#" data-filter="startups">Startups</a>
