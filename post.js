@@ -17,8 +17,24 @@ if (skip) {
   skip.addEventListener('click', () => skip.classList.remove('show'));
 }
 
-const navLinks = document.querySelectorAll('.nav-links a');
-navLinks.forEach(link => link.addEventListener('click', () => {
+const navLinks = document.querySelectorAll('.nav-links [data-filter]');
+
+function setActiveFilter(activeLink) {
+  navLinks.forEach(link => {
+    if (link === activeLink) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+const defaultNavLink = document.querySelector('.nav-links [data-filter="todas"]');
+if (defaultNavLink) setActiveFilter(defaultNavLink);
+
+navLinks.forEach(link => link.addEventListener('click', (e) => {
+  e.preventDefault();
+  setActiveFilter(link);
   if (navControls) navControls.close();
 }));
 

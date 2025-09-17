@@ -282,11 +282,24 @@ loadArticles();
 setInterval(updateCache, CACHE_MS);
 
 const links = document.querySelectorAll('.nav-links [data-filter]');
+
+function setActiveFilter(activeLink) {
+  links.forEach(link => {
+    if (link === activeLink) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+const defaultLink = document.querySelector('.nav-links [data-filter="todas"]');
+if (defaultLink) setActiveFilter(defaultLink);
+
 links.forEach(link => link.addEventListener('click', (e) => {
   e.preventDefault();
   const f = link.getAttribute('data-filter') || 'todas';
-  links.forEach(l => l.removeAttribute('aria-current'));
-  link.setAttribute('aria-current', 'page');
+  setActiveFilter(link);
   const filtered = filterArticlesByCategory(f);
   renderArticles(filtered);
   if (navControls) navControls.close();

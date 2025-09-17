@@ -18,6 +18,7 @@ if (skip) {
 }
 
 let articles = [];
+let searchResults = [];
 
 const articlesEl = document.getElementById('articles');
 const resultsMsg = document.getElementById('resultsMsg');
@@ -93,6 +94,7 @@ function performSearch() {
         (a.titulo + ' ' + a.resumen + ' ' + a.etiquetas.join(' ')).toLowerCase().includes(term)
       )
     : [];
+  searchResults = results;
   if (!results.length) {
     resultsMsg.hidden = false;
     articlesEl.innerHTML = '';
@@ -266,18 +268,36 @@ loadArticles();
 setInterval(updateCache, CACHE_MS);
 
 const links = document.querySelectorAll('.nav-links [data-filter]');
+
+function setActiveFilter(activeLink) {
+  links.forEach(link => {
+    if (link === activeLink) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+const defaultLink = document.querySelector('.nav-links [data-filter="todas"]');
+if (defaultLink) setActiveFilter(defaultLink);
+
 links.forEach(link => link.addEventListener('click', (e) => {
   e.preventDefault();
   const f = link.getAttribute('data-filter') || 'todas';
-  links.forEach(l => l.removeAttribute('aria-current'));
-  link.setAttribute('aria-current', 'page');
-  const results = filterArticlesByCategory(f);
-  if (!results.length) {
-    resultsMsg.hidden = false;
-    articlesEl.innerHTML = '';
+  setActiveFilter(link);
+  if (f === 'todas') {
+    performSearch();
   } else {
-    resultsMsg.hidden = true;
-    renderArticles(results);
+    const baseList = searchResults.length ? searchResults : articles;
+    const results = filterArticlesByCategory(f, baseList);
+    if (!results.length) {
+      resultsMsg.hidden = false;
+      articlesEl.innerHTML = '';
+    } else {
+      resultsMsg.hidden = true;
+      renderArticles(results);
+    }
   }
   if (navControls) navControls.close();
 }));
