@@ -12,7 +12,12 @@ let articles = [];
 
 const articlesEl = document.getElementById('articles');
 const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
-const { apiUrl = '/.netlify/functions/wordpress', username, password } = window.WP_CONFIG || {};
+const defaultConfig = {
+  apiUrl: 'https://example.com/wp-json/wp/v2/posts?_embed=1',
+  username: '',
+  password: ''
+};
+const { apiUrl, username, password } = { ...defaultConfig, ...(window.WP_CONFIG || {}) };
 const authOptions = username ? {
   headers: { Authorization: `Basic ${btoa(`${username}:${password ?? ''}`)}` }
 } : undefined;
