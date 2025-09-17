@@ -17,7 +17,12 @@ const params = new URLSearchParams(window.location.search);
 const initialTerm = (params.get('q') || '').trim();
 const q = document.getElementById('q');
 if (q && initialTerm) q.value = initialTerm;
-const { apiUrl = '/.netlify/functions/wordpress', username, password } = window.WP_CONFIG || {};
+const defaultConfig = {
+  apiUrl: 'https://example.com/wp-json/wp/v2/posts?_embed=1',
+  username: '',
+  password: ''
+};
+const { apiUrl, username, password } = { ...defaultConfig, ...(window.WP_CONFIG || {}) };
 const authOptions = username ? {
   headers: { Authorization: `Basic ${btoa(`${username}:${password ?? ''}`)}` }
 } : undefined;
