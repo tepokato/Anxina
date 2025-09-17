@@ -253,7 +253,10 @@ header.site-header {
   cursor: pointer;
 }
 
-.suggestions li:hover {
+.suggestions li:hover,
+.suggestions li:focus-visible,
+.suggestions li.is-active,
+.suggestions li[aria-selected="true"] {
   background: var(--border);
   color: var(--text);
 }
