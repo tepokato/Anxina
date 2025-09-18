@@ -394,6 +394,29 @@ header.site-header {
   border-radius: 0.5em;
 }
 
+#post iframe,
+#post-content iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  margin: 0;
+}
+
+#post-content .wp-block-embed,
+#post-content .wp-block-embed__wrapper {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+#post-content .wp-block-embed__wrapper {
+  aspect-ratio: 16 / 9;
+}
+
 #post-content .separator,
 #post-content figure {
   max-width: 100%;
