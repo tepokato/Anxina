@@ -1,10 +1,10 @@
 {
-  "name": "ANXINA",
-  "short_name": "ANXINA",
+  "name": "El común",
+  "short_name": "El común",
   "start_url": "/Anxina/",
   "display": "standalone",
-  "background_color": "#E9EFEC",
-  "theme_color": "#16423C",
+  "background_color": "#F4E5C3",
+  "theme_color": "#1C2640",
   "icons": [
     {
       "src": "icons/android-chrome-192x192.png",

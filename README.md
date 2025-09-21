@@ -1,6 +1,6 @@
-# Anxina
+# El común
 
-Anxina is a static news site that hydrates its pages with content pulled directly from the WordPress REST API. The UI lives in the repository root and reads the endpoint configuration from `wp-config.js`.
+El común is a static news site that hydrates its pages with content pulled directly from the WordPress REST API. The UI lives in the repository root and reads the endpoint configuration from `wp-config.js`.
 
 ## Configuration
 
@@ -33,7 +33,7 @@ If the WordPress API is served from a different origin than the static assets, m
 
 ## Hosting & deployment
 
-Anxina is a bundle of static assets that talk to WordPress directly from the browser. You can deploy the contents of the repository to any static host:
+El común is a bundle of static assets that talk to WordPress directly from the browser. You can deploy the contents of the repository to any static host:
 
 * **WordPress-hosted** – Upload the compiled assets (including `index.html`, `post.html`, `search.html`, and the `assets/` directory) to a subdirectory on the same domain as your WordPress site. This keeps the API on the same origin and simplifies authentication.
 * **Static hosting services** – Platforms such as GitHub Pages, Cloudflare Pages, Vercel, an S3 bucket behind CloudFront, or traditional web servers can serve the files as-is. Configure `wp-config.js` with the production `apiUrl` before deploying so the static site knows where to fetch data.
