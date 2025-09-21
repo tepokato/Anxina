@@ -22,7 +22,7 @@ let searchResults = [];
 
 const articlesEl = document.getElementById('articles');
 const resultsMsg = document.getElementById('resultsMsg');
-const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
+const fallbackImage = 'assets/el-comun-emblema.svg';
 const params = new URLSearchParams(window.location.search);
 const initialTerm = (params.get('q') || '').trim();
 const q = document.getElementById('q');

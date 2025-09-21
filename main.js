@@ -20,7 +20,7 @@ if (skip) {
 let articles = [];
 
 const articlesEl = document.getElementById('articles');
-const fallbackImage = 'assets/ANXINA-LOGO-NO-BC.webp';
+const fallbackImage = 'assets/el-comun-emblema.svg';
 // Prefer the runtime configuration but fall back to a public WordPress REST endpoint
 // so the static build keeps working without Netlify Functions.
 const fallbackApiUrl = 'https://wordpress.org/news/wp-json/wp/v2/posts?_embed=1';

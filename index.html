@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ANXINA — Noticias de tecnología y ciencia</title>
-  <meta name="description" content="Noticias y análisis de tecnología y ciencia para Latinoamérica: innovaciones, startups, energía, salud digital y más." />
-  <meta name="keywords" content="tecnología, ciencia, Latinoamérica, innovación, startups, energía, salud, IA, ciberseguridad, videojuegos" />
-  <meta name="theme-color" content="#16423C" />
+  <title>El común — Periodismo popular latinoamericano</title>
+  <meta name="description" content="Historias, análisis y denuncias desde el pueblo latinoamericano: México, Centroamérica y Sudamérica." />
+  <meta name="keywords" content="noticias, comunidad, latinoamérica, justicia social, derechos humanos, México, Centroamérica, Sudamérica" />
+  <meta name="theme-color" content="#1C2640" />
   <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
@@ -14,10 +14,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="icons/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="icons/android-chrome-512x512.png">
+    <link rel="icon" type="image/svg+xml" href="assets/el-comun-emblema.svg">
     <meta property="og:type" content="website" />
-  <meta property="og:title" content="ANXINA" />
-  <meta property="og:description" content="Noticias y análisis de tecnología y ciencia para Latinoamérica." />
-  <meta property="og:image" content="https://tepokato.github.io/Anxina/icons/android-chrome-512x512.png" />
+  <meta property="og:title" content="El común" />
+  <meta property="og:description" content="Periodismo popular para visibilizar las luchas del pueblo latinoamericano." />
+  <meta property="og:image" content="https://tepokato.github.io/Anxina/assets/el-comun-emblema.svg" />
   <meta property="og:url" content="https://tepokato.github.io/Anxina/" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -25,15 +26,15 @@
   {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
-    "name": "ANXINA",
+    "name": "El común",
     "url": "https://tepokato.github.io/Anxina/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://tepokato.github.io/Anxina/icons/android-chrome-512x512.png",
+      "url": "https://tepokato.github.io/Anxina/assets/el-comun-emblema.svg",
       "width": 512,
       "height": 512
     },
-    "areaServed": ["Latin America", "Mexico", "Colombia", "Argentina", "Chile", "Perú"]
+    "areaServed": ["Latinoamérica", "México", "Centroamérica", "Sudamérica"]
   }
   </script>
 
@@ -46,13 +47,32 @@
   </a>
   <header class="site-header">
     <div class="container nav" role="navigation" aria-label="Principal">
-      <a class="brand" href="index.html" aria-label="ANXINA">
+      <a class="brand" href="index.html" aria-label="El común">
         <span class="brand-logo" aria-hidden="true">
-          <img src="assets/ANXINA-LOGO-NO-BC.webp" alt="" />
+          <svg class="brand-mark" viewBox="0 0 160 160" role="presentation" focusable="false">
+            <rect width="160" height="160" rx="28" fill="#F4E5C3"></rect>
+            <circle cx="80" cy="80" r="64" fill="#1C2640"></circle>
+            <g transform="rotate(-12 80 80)">
+              <rect x="28" y="70" width="92" height="16" rx="8" fill="#F4D58D"></rect>
+              <rect x="24" y="70" width="16" height="16" rx="8" fill="#EB7A3D"></rect>
+              <polygon points="120,78 138,70 138,86" fill="#1C2640"></polygon>
+              <rect x="28" y="78" width="92" height="3" fill="#1C2640" opacity="0.35"></rect>
+            </g>
+            <g fill="#EB7A3D">
+              <rect x="42" y="32" width="20" height="40" rx="9"></rect>
+              <rect x="60" y="28" width="22" height="44" rx="10"></rect>
+              <rect x="80" y="32" width="20" height="40" rx="9"></rect>
+              <rect x="48" y="58" width="64" height="54" rx="18"></rect>
+              <rect x="54" y="82" width="44" height="34" rx="14"></rect>
+              <rect x="92" y="62" width="24" height="24" rx="10"></rect>
+            </g>
+            <rect x="64" y="96" width="32" height="22" rx="11" fill="#D65A31"></rect>
+            <rect x="70" y="104" width="20" height="16" rx="8" fill="#1C2640" opacity="0.2"></rect>
+          </svg>
         </span>
         <span>
-          ANXINA
-          <small>Noticias de tecnología y ciencia</small>
+          EL COMÚN
+          <small>Noticias del pueblo latinoamericano</small>
         </span>
       </a>
 
@@ -62,12 +82,12 @@
       </button>
 
       <div class="nav-menu" id="siteMenu">
-        <nav id="siteFilters" class="nav-links" aria-label="Categorías">
-          <a class="chip" href="#" data-filter="todas" aria-current="page">Todas</a>
-          <a class="chip" href="#" data-filter="tecnologia">Tecnología</a>
-          <a class="chip" href="#" data-filter="ciencia">Ciencia</a>
-          <a class="chip" href="#" data-filter="startups">Startups</a>
-          <a class="chip" href="#" data-filter="opinion">Opinión</a>
+        <nav id="siteFilters" class="nav-links" aria-label="Secciones">
+          <a class="chip" href="#" data-filter="todas" aria-current="page">Portada</a>
+          <a class="chip" href="#" data-filter="mexico">México</a>
+          <a class="chip" href="#" data-filter="centroamerica">Centroamérica</a>
+          <a class="chip" href="#" data-filter="suramerica">Sudamérica</a>
+          <a class="chip" href="#" data-filter="voces">Voces</a>
         </nav>
 
         <div class="actions">
@@ -106,7 +126,7 @@
       <section class="section" aria-labelledby="ultimas">
       <h2 id="ultimas">
         <i class="bi bi-list"></i>
-        Últimas publicaciones
+        Crónicas recientes
       </h2>
       <div id="articles" class="grid" role="list"></div>
     </section>
@@ -117,7 +137,7 @@
           <i class="bi bi-envelope-fill" aria-hidden="true"></i>
           Suscríbete al boletín
         </h2>
-        <p>Recibe un resumen semanal con lo mejor de tecnología y ciencia en Latinoamérica. Sin spam, sin ruido.</p>
+        <p>Recibe un resumen semanal con luchas, victorias y denuncias desde los territorios latinoamericanos. Sin spam, solo voz colectiva.</p>
         <form id="newsletterForm" action="#">
           <div class="field">
             <input class="input" type="email" name="email" placeholder="tu@correo.com" aria-label="Correo electrónico" required />
@@ -169,7 +189,7 @@
       </a>
     </div>
     <div class="container privacy"><a href="#">Política de privacidad</a></div>
-    <div class="container copyright">© <span id="y"></span> ANXINA — Hecho con ❤️ en Latinoamérica.</div>
+    <div class="container copyright">© <span id="y"></span> El común — Hecho con ❤️ desde México, Centroamérica y Sudamérica.</div>
     <div class="container meta">Edición: Latinoamérica • Español (es-419)</div>
   </footer>
 
