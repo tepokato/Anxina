@@ -10,7 +10,7 @@
     root.dataset.theme = theme;
     toggle.setAttribute('aria-pressed', theme === 'light');
     if (text) {
-      text.textContent = theme === 'light' ? 'light_mode' : 'dark_mode';
+      text.textContent = theme === 'light' ? 'Tema claro' : 'Tema oscuro';
     }
   };
 
