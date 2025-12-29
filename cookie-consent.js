@@ -5,7 +5,6 @@
   }
 
   const acceptButton = banner.querySelector('[data-consent="accept"]');
-  const rejectButton = banner.querySelector('[data-consent="reject"]');
   const customizeButton = banner.querySelector('[data-consent="customize"]');
   const details = banner.querySelector('.cookie-banner__details');
 
@@ -25,10 +24,6 @@
 
   if (acceptButton) {
     acceptButton.addEventListener('click', () => dismiss('accepted'));
-  }
-
-  if (rejectButton) {
-    rejectButton.addEventListener('click', () => dismiss('rejected'));
   }
 
   if (customizeButton && details) {
