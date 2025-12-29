@@ -4,13 +4,14 @@
   if (!toggle) {
     return;
   }
-  const text = toggle.querySelector('.theme-toggle__text');
+  const icon = toggle.querySelector('.theme-toggle__icon');
 
   const applyTheme = (theme) => {
     root.dataset.theme = theme;
     toggle.setAttribute('aria-pressed', theme === 'light');
-    if (text) {
-      text.textContent = theme === 'light' ? 'Tema claro' : 'Tema oscuro';
+    toggle.setAttribute('aria-label', theme === 'light' ? 'Activar tema oscuro' : 'Activar tema claro');
+    if (icon) {
+      icon.textContent = theme === 'light' ? 'light_mode' : 'dark_mode';
     }
   };
 
