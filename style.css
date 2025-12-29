@@ -165,11 +165,6 @@ a:focus {
   cursor: pointer;
 }
 
-.theme-toggle__text {
-  font-size: 20px;
-  line-height: 1;
-}
-
 .theme-toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
