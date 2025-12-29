@@ -8,25 +8,15 @@
   const rejectButton = banner.querySelector('[data-consent="reject"]');
   const customizeButton = banner.querySelector('[data-consent="customize"]');
   const details = banner.querySelector('.cookie-banner__details');
-  const storageKey = 'cookieConsent';
 
-  let storedConsent = null;
-  try {
-    storedConsent = window.localStorage.getItem(storageKey);
-  } catch (error) {
-    storedConsent = null;
-  }
+  const storedConsent = localStorage.getItem('cookieConsent');
   if (storedConsent) {
     banner.remove();
     return;
   }
 
   const dismiss = (value) => {
-    try {
-      window.localStorage.setItem(storageKey, value);
-    } catch (error) {
-      // Ignore storage errors and still dismiss the banner.
-    }
+    localStorage.setItem('cookieConsent', value);
     banner.dataset.state = 'dismissed';
     window.setTimeout(() => {
       banner.remove();
