@@ -1,0 +1,23 @@
+Title:
+
+Body:
+
+Tags (comma-separated):
+
+Date Created (YYYY-MM-DD):
+
+Time Created (HH:MM, 24h):
+
+Author:
+
+Summary/Excerpt:
+
+Featured Image URL:
+
+Slug (URL-friendly title):
+
+Category:
+
+Status (draft/published):
+
+Additional Notes:
