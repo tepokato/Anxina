@@ -31,7 +31,7 @@ Tepokato
 Summary/Excerpt:
 Menos RAM para ti. Más memoria para la IA.
 Featured Image URL:
-ram-ia.png
+assets/img/ram-ia.png
 Slug (URL-friendly title):
 menos-ram-mas-discurso
 Category:
