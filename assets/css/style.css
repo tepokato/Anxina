@@ -158,6 +158,67 @@ a:focus {
   border-color: var(--accent);
 }
 
+.nav-menu {
+  position: relative;
+}
+
+.nav-menu > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  color: inherit;
+}
+
+.nav-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-menu[open] > summary,
+.nav-menu > summary:hover,
+.nav-menu > summary:focus-visible {
+  border-color: var(--accent);
+}
+
+.nav-menu__panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 190px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 24px var(--shadow);
+  display: grid;
+  gap: 10px;
+  z-index: 10;
+}
+
+.nav-menu__panel a {
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-menu__panel a.active,
+.nav-menu__panel a:hover {
+  border-color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .search {
   display: flex;
   align-items: center;
