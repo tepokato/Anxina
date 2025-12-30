@@ -340,6 +340,15 @@ a:focus {
   gap: 12px;
 }
 
+.post__thumb {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 8px 18px var(--shadow);
+}
+
 .post__meta {
   display: flex;
   flex-wrap: wrap;
