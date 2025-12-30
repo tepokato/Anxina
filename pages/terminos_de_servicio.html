@@ -20,15 +20,18 @@
           <span class="central-clock__label">CONECTADO</span>
         </div>
       </div>
-      <div class="brand">
-        <div class="brand__badge">
-          <h1 class="brand__title">ANXiNA</h1>
+      <div class="header-main">
+        <div class="brand">
+          <div class="brand__badge">
+            <h1 class="brand__title">ANXiNA</h1>
+          </div>
+          <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
         </div>
-        <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
-      </div>
-      <div class="header-meta">
-        <nav class="nav" aria-label="Navegación principal">
-          <a href="../index.html">Inicio</a>
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
+            <span class="theme-toggle__icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
+            <span class="theme-toggle__switch" aria-hidden="true"></span>
+          </button>
           <details class="nav-menu">
             <summary aria-label="Abrir menú de páginas">
               <span class="material-symbols-outlined" aria-hidden="true">menu</span>
@@ -41,16 +44,18 @@
               <a class="active" href="terminos_de_servicio.html">Términos</a>
             </div>
           </details>
-        </nav>
-        <label class="search" aria-label="Buscar en ANXiNA">
-          <span class="search__prompt" aria-hidden="true">&gt;_</span>
-          <input type="search" placeholder="buscar_comando..." />
-        </label>
-        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
-          <span class="theme-toggle__icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
-          <span class="theme-toggle__switch" aria-hidden="true"></span>
-        </button>
+        </div>
       </div>
+      <label class="search" aria-label="Buscar en ANXiNA">
+        <span class="search__prompt" aria-hidden="true">&gt;_</span>
+        <input type="search" placeholder="buscar_comando..." />
+      </label>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="../index.html">Inicio</a>
+        <a href="../index.html#stream">Tecnología</a>
+        <a href="../index.html#stream">Ciencia</a>
+        <a href="../index.html#stream">Videojuegos</a>
+      </nav>
     </div>
   </header>
 
