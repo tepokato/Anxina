@@ -389,7 +389,7 @@ a:focus {
   }
 
   .brand__badge {
-    width: 100%;
+    width: fit-content;
     justify-content: flex-start;
   }
 
@@ -424,8 +424,9 @@ a:focus {
   }
 
   .theme-toggle {
-    width: 100%;
+    width: fit-content;
     justify-content: space-between;
+    align-self: flex-start;
   }
 
   .hero {
