@@ -12,9 +12,12 @@
   <header class="site-header">
     <div class="container">
       <div class="header-top">
-        <div class="central-clock" aria-live="polite">
-          <span class="central-clock__label">Central</span>
-          <time class="central-clock__time" data-central-time></time>
+        <div class="central-clock">
+          <span class="central-clock__label">SYS.ONLINE</span>
+        </div>
+        <div class="central-clock">
+          <span class="status-dot status-dot--ok" aria-hidden="true"></span>
+          <span class="central-clock__label">CONECTADO</span>
         </div>
       </div>
       <div class="brand">
@@ -40,8 +43,8 @@
           </details>
         </nav>
         <label class="search" aria-label="Buscar en ANXiNA">
-          <span class="material-symbols-outlined" aria-hidden="true">search</span>
-          <input type="search" placeholder="Escribe un tema o palabra clave" />
+          <span class="search__prompt" aria-hidden="true">&gt;_</span>
+          <input type="search" placeholder="buscar_comando..." />
         </label>
         <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
           <span class="theme-toggle__icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
