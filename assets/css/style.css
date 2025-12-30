@@ -75,6 +75,31 @@ a:focus {
   border-bottom: 1px solid var(--border);
 }
 
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.central-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.central-clock__label {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.central-clock__time {
+  font-variant-numeric: tabular-nums;
+}
+
 .brand {
   display: flex;
   align-items: center;
