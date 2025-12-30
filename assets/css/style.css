@@ -154,21 +154,34 @@ a:focus {
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 18px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-bottom: 2px;
 }
 
 .nav a {
+  display: inline-flex;
+  align-items: center;
   padding-bottom: 6px;
   border-bottom: 2px solid transparent;
+  color: var(--muted);
 }
 
 .nav a.active,
 .nav a:hover {
   border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav a.active::before {
+  content: "./";
+  margin-right: 4px;
+  color: var(--accent);
 }
 
 .nav-menu {
