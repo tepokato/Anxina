@@ -111,14 +111,6 @@ a:focus {
   font-variant-numeric: tabular-nums;
 }
 
-.header-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 14px;
-}
-
 .brand {
   display: flex;
   align-items: center;
@@ -151,22 +143,22 @@ a:focus {
   font-size: 0.95rem;
 }
 
-.header-actions {
-  display: inline-flex;
+.header-meta {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  margin-top: 18px;
+  flex-wrap: wrap;
 }
 
 .nav {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 22px;
+  gap: 18px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
 }
 
 .nav a {
@@ -189,10 +181,8 @@ a:focus {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--post-bg);
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
   color: inherit;
 }
 
@@ -251,8 +241,6 @@ a:focus {
   padding: 10px 14px;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(55, 45, 30, 0.08);
-  width: 100%;
-  margin-bottom: 12px;
 }
 
 .search input {
@@ -268,7 +256,7 @@ a:focus {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 10px;
+  padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--post-bg);
@@ -511,11 +499,6 @@ a:focus {
     padding: 20px 0 12px;
   }
 
-  .header-main {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .brand {
     flex-direction: column;
     align-items: flex-start;
@@ -527,16 +510,24 @@ a:focus {
     justify-content: flex-start;
   }
 
+  .header-meta {
+    gap: 12px;
+  }
+
   .nav {
     width: 100%;
     flex-direction: column;
     gap: 8px;
-    padding-top: 6px;
   }
 
   .nav a {
     width: 100%;
     padding: 6px 0;
+  }
+
+  .header-meta {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .search {
@@ -552,6 +543,7 @@ a:focus {
   .theme-toggle {
     width: fit-content;
     justify-content: space-between;
+    align-self: flex-start;
   }
 
   .hero {
