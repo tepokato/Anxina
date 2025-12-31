@@ -312,6 +312,7 @@ a:focus {
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: start;
+  position: relative;
 }
 
 .hero__thumb {
@@ -344,6 +345,14 @@ a:focus {
   padding: 4px 10px;
   border: 1px solid var(--accent);
   border-radius: 6px;
+}
+
+.hero__card .badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+  background: var(--page-bg);
 }
 
 .badge::before {
