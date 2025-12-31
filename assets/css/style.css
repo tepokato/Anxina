@@ -346,6 +346,19 @@ a:focus {
   border-radius: 6px;
 }
 
+.hero__card .badge {
+  border: none;
+  padding: 0;
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+}
+
+.hero__card .badge::before,
+.hero__card .badge::after {
+  content: none;
+}
+
 .badge::before {
   content: "[";
   margin-right: 4px;
