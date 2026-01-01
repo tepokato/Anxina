@@ -146,11 +146,11 @@ STREAM_ITEM_TEMPLATE = """        <article class="post post--compact">
               <span>{author} · {category}</span>
             </div>
             <p>{summary}</p>
-            <div class="post__footer">
-              <div class="post__tags">
+            <div class="post__tags">
 {tags}
-              </div>
-              <a class="post__link" href="posts/{slug}.html">Leer artículo</a>
+            </div>
+            <div class="post__actions">
+              <a class="button" href="posts/{slug}.html">Leer artículo</a>
             </div>
           </div>
         </article>"""
