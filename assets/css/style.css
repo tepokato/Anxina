@@ -303,11 +303,10 @@ a:focus {
 }
 
 .hero__card {
-  background: var(--post-bg);
+  background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 28px 30px;
-  box-shadow: 0 20px 30px rgba(76, 58, 32, 0.14);
+  border-radius: 10px;
+  padding: 18px;
   display: grid;
   grid-template-columns: minmax(220px, 320px) 1fr;
   gap: 28px;
@@ -321,7 +320,6 @@ a:focus {
   border: 1px solid #eee5da;
   object-fit: cover;
   aspect-ratio: 4 / 5;
-  box-shadow: 0 16px 28px rgba(58, 42, 20, 0.18);
 }
 
 .hero__content {
@@ -384,12 +382,11 @@ a:focus {
 
 .post {
   border: 1px solid var(--border);
-  background: var(--post-bg);
-  border-radius: 16px;
-  padding: 22px 24px;
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 18px;
   display: grid;
   gap: 12px;
-  box-shadow: 0 12px 20px rgba(59, 43, 22, 0.08);
 }
 
 .post--compact {
