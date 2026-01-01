@@ -134,23 +134,26 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
 
 STREAM_ITEM_TEMPLATE = """        <article class="post post--compact">
-          <a href="posts/{slug}.html">
-            <img class="post__thumb" src="{image}" alt="{alt}" />
-          </a>
+          <div class="post__media">
+            <a href="posts/{slug}.html">
+              <img class="post__thumb" src="{image}" alt="{alt}" />
+            </a>
+            <span class="post__badge">{category}</span>
+          </div>
           <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/{slug}.html">{title}</a>
-            </h4>
             <div class="post__meta">
               <span>{date}</span>
               <span>{author} · {category}</span>
             </div>
-            <p>{summary}</p>
+            <h4>
+              <a class="post__title-link" href="posts/{slug}.html">{title}</a>
+            </h4>
+            <p class="post__summary">{summary}</p>
             <div class="post__tags">
 {tags}
             </div>
             <div class="post__actions">
-              <a class="button" href="posts/{slug}.html">Leer artículo</a>
+              <a class="post__read-more" href="posts/{slug}.html">Leer más</a>
             </div>
           </div>
         </article>"""
