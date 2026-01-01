@@ -14,6 +14,8 @@ Summary/Excerpt:
 
 Featured Image URL:
 
+Featured Image Alt:
+
 Slug (URL-friendly title):
 
 Category:
