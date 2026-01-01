@@ -304,23 +304,24 @@ a:focus {
 
 .hero__card {
   background: var(--post-bg);
-  border: 2px solid var(--accent);
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 14px 24px rgba(76, 58, 32, 0.12);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 30px;
+  box-shadow: 0 20px 30px rgba(76, 58, 32, 0.14);
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 20px;
-  align-items: start;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 28px;
+  align-items: center;
+  position: relative;
 }
 
 .hero__thumb {
-  width: 110px;
-  height: 110px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #eee5da;
   object-fit: cover;
-  box-shadow: 0 10px 20px var(--shadow);
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 16px 28px rgba(58, 42, 20, 0.18);
 }
 
 .hero__content {
@@ -347,11 +348,17 @@ a:focus {
 }
 
 .hero__card .badge {
-  border: none;
-  padding: 0;
-  margin: 0 0 8px;
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
+  border: 1px solid #f1dcc4;
+  padding: 6px 14px;
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  background: #fff4e5;
+  color: var(--accent-strong);
+  border-radius: 999px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
 }
 
 .hero__card .badge::before,
@@ -378,16 +385,17 @@ a:focus {
 .post {
   border: 1px solid var(--border);
   background: var(--post-bg);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 22px 24px;
   display: grid;
   gap: 12px;
+  box-shadow: 0 12px 20px rgba(59, 43, 22, 0.08);
 }
 
 .post--compact {
   grid-template-columns: auto 1fr;
-  gap: 18px;
-  align-items: start;
+  gap: 20px;
+  align-items: center;
 }
 
 .post--compact .post__body {
@@ -405,8 +413,8 @@ a:focus {
 }
 
 .post--compact .post__thumb {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   aspect-ratio: 1;
 }
 
@@ -438,15 +446,25 @@ a:focus {
   flex-wrap: wrap;
 }
 
+.post--compact .post__actions {
+  justify-content: flex-end;
+}
+
 .button {
   border: 1px solid var(--button-bg);
   color: var(--button-text);
   background: var(--button-bg);
   padding: 10px 18px;
-  border-radius: 10px;
+  border-radius: 999px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.post--compact .button {
+  background: #f4efe9;
+  border-color: #e8ddcf;
+  color: #4b4032;
 }
 
 .button.secondary {
