@@ -4,6 +4,7 @@ from __future__ import annotations
 import dataclasses
 import datetime as dt
 import html
+import json
 import re
 from pathlib import Path
 from typing import Iterable
@@ -11,6 +12,7 @@ from typing import Iterable
 ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "posts"
 INDEX_PATH = ROOT / "index.html"
+AUTHORS_PATH = ROOT / "data" / "authors.json"
 
 FIELD_LABELS = {
     "Title:": "title",
@@ -48,6 +50,16 @@ class Post:
     @property
     def datetime(self) -> dt.datetime:
         return dt.datetime.strptime(f"{self.date} {self.time}", "%Y-%m-%d %H:%M")
+
+
+@dataclasses.dataclass
+class Author:
+    key: str
+    name: str
+    title: str
+    bio: str
+    image: str
+    image_alt: str
 
 
 HTML_TEMPLATE = """<!DOCTYPE html>
@@ -103,6 +115,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="post__tags">
 {tags}
         </div>
+{author_card}
       </article>
 {related_section}
     </div>
@@ -200,6 +213,24 @@ def parse_post(path: Path) -> Post:
         status=join_field("status"),
         notes=join_field("notes"),
     )
+
+
+def load_authors() -> dict[str, Author]:
+    if not AUTHORS_PATH.exists():
+        return {}
+
+    data = json.loads(AUTHORS_PATH.read_text(encoding="utf-8"))
+    authors: dict[str, Author] = {}
+    for key, details in data.items():
+        authors[key] = Author(
+            key=key,
+            name=details.get("name", key),
+            title=details.get("title", ""),
+            bio=details.get("bio", ""),
+            image=details.get("image", ""),
+            image_alt=details.get("image_alt", f"Retrato de {details.get('name', key)}"),
+        )
+    return authors
 
 
 def normalize_post_image(src: str) -> str:
@@ -324,7 +355,7 @@ def render_related_section(related_posts: list[Post]) -> str:
     )
 
 
-def render_post(post: Post, related_posts: list[Post]) -> str:
+def render_post(post: Post, related_posts: list[Post], author: Author | None) -> str:
     body_html = render_body_markdown(post.body)
     tags_html = format_tags(post.tags)
     return HTML_TEMPLATE.format(
@@ -337,7 +368,31 @@ def render_post(post: Post, related_posts: list[Post]) -> str:
         featured_image_alt=html.escape(post.featured_image_alt),
         body=body_html,
         tags=tags_html,
+        author_card=render_author_card(author) if author else "",
         related_section=render_related_section(related_posts),
+    )
+
+
+def render_author_card(author: Author) -> str:
+    if not author:
+        return ""
+
+    image = normalize_post_image(author.image) if author.image else ""
+    image_html = (
+        f'        <img class="author-card__avatar" src="{html.escape(image)}" alt="{html.escape(author.image_alt)}" />'
+        if image
+        else ""
+    )
+    return (
+        "\n"
+        '        <section class="author-card">\n'
+        f"{image_html}\n"
+        '          <div class="author-card__details">\n'
+        f"            <p class=\"author-card__name\">{html.escape(author.name)}</p>\n"
+        f"            <p class=\"author-card__title\">{html.escape(author.title)}</p>\n"
+        f"            <p class=\"author-card__bio\">{html.escape(author.bio)}</p>\n"
+        "          </div>\n"
+        "        </section>"
     )
 
 
@@ -398,6 +453,7 @@ def update_index(stream_html: str) -> None:
 
 
 def main() -> None:
+    authors = load_authors()
     posts = [parse_post(path) for path in POSTS_DIR.glob("*.txt")]
     posts_sorted = sorted(posts, key=lambda post: post.datetime, reverse=True)
 
@@ -405,7 +461,8 @@ def main() -> None:
 
     for post in posts:
         related_posts = select_related(post, published)
-        html_output = render_post(post, related_posts)
+        author = authors.get(post.author)
+        html_output = render_post(post, related_posts, author)
         output_path = POSTS_DIR / f"{post.slug}.html"
         output_path.write_text(html_output, encoding="utf-8")
 
