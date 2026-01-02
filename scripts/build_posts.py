@@ -159,6 +159,22 @@ STREAM_ITEM_TEMPLATE = """        <article class="post post--compact">
           </div>
         </article>"""
 
+HERO_TEMPLATE = """        <article class="hero__card">
+          <a href="posts/{slug}.html">
+            <img class="hero__thumb" src="{image}" alt="{alt}" />
+          </a>
+          <div class="hero__content">
+            <div class="badge">En portada</div>
+            <h2>
+              <a class="post__title-link" href="posts/{slug}.html">{title}</a>
+            </h2>
+            <p>{summary}</p>
+            <div class="post__actions">
+              <a class="button" href="posts/{slug}.html">Leer artículo</a>
+            </div>
+          </div>
+        </article>"""
+
 
 RELATED_ITEM_TEMPLATE = """          <article class="post post--compact">
             <a href="{slug}.html">
@@ -417,6 +433,16 @@ def render_stream(posts: list[Post]) -> str:
     return "\n".join(items)
 
 
+def render_portada(post: Post) -> str:
+    return HERO_TEMPLATE.format(
+        image=html.escape(normalize_index_image(post.featured_image)),
+        alt=html.escape(post.featured_image_alt),
+        title=html.escape(post.title),
+        summary=html.escape(post.summary),
+        slug=html.escape(post.slug),
+    )
+
+
 def select_related(post: Post, candidates: list[Post], limit: int = 3) -> list[Post]:
     if not post.tags:
         return []
@@ -439,10 +465,12 @@ def select_related(post: Post, candidates: list[Post], limit: int = 3) -> list[P
     return [candidate for _, _, candidate in scored[:limit]]
 
 
-def update_index(stream_html: str) -> None:
+def update_index(stream_html: str, portada_html: str | None = None) -> None:
     content = INDEX_PATH.read_text(encoding="utf-8")
     start_marker = "<!-- posts:begin -->"
     end_marker = "<!-- posts:end -->"
+    portada_start = "<!-- portada:begin -->"
+    portada_end = "<!-- portada:end -->"
 
     if start_marker not in content or end_marker not in content:
         raise RuntimeError("Missing stream markers in index.html")
@@ -451,6 +479,14 @@ def update_index(stream_html: str) -> None:
     _, after = rest.split(end_marker, 1)
 
     updated = f"{before}{start_marker}\n{stream_html}\n        {end_marker}{after}"
+
+    if portada_html is not None:
+        if portada_start not in updated or portada_end not in updated:
+            raise RuntimeError("Missing portada markers in index.html")
+        before_portada, rest_portada = updated.split(portada_start, 1)
+        _, after_portada = rest_portada.split(portada_end, 1)
+        updated = f"{before_portada}{portada_start}\n{portada_html}\n        {portada_end}{after_portada}"
+
     INDEX_PATH.write_text(updated, encoding="utf-8")
 
 
@@ -471,7 +507,8 @@ def main() -> None:
             post.source_path.unlink()
 
     stream_html = render_stream(published)
-    update_index(stream_html)
+    portada_html = render_portada(published[0]) if published else None
+    update_index(stream_html, portada_html)
 
 
 if __name__ == "__main__":
