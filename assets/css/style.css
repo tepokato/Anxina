@@ -432,6 +432,44 @@ a:focus {
   color: var(--muted);
 }
 
+.post__toc {
+  border: 1px solid var(--border);
+  background: var(--callout-bg);
+  border-radius: 10px;
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.post__toc-title {
+  margin: 0;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.post__toc ol {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.post__toc ol ol {
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+.post__toc a {
+  color: var(--text);
+}
+
+.post__toc a:hover,
+.post__toc a:focus {
+  color: var(--accent-strong);
+}
+
 .post__tags {
   display: flex;
   gap: 10px;
