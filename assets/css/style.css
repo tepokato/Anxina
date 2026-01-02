@@ -559,10 +559,6 @@ a:focus {
   color: #1f2933;
 }
 
-.author-card__social-text {
-  font-weight: 600;
-}
-
 .post__actions {
   display: flex;
   gap: 12px;
