@@ -46,6 +46,7 @@ class Post:
     category: str
     status: str
     notes: str
+    source_path: Path
 
     @property
     def datetime(self) -> dt.datetime:
@@ -212,6 +213,7 @@ def parse_post(path: Path) -> Post:
         category=join_field("category"),
         status=join_field("status"),
         notes=join_field("notes"),
+        source_path=path,
     )
 
 
@@ -465,6 +467,8 @@ def main() -> None:
         html_output = render_post(post, related_posts, author)
         output_path = POSTS_DIR / f"{post.slug}.html"
         output_path.write_text(html_output, encoding="utf-8")
+        if post.status.lower() == "published" and post.source_path.exists():
+            post.source_path.unlink()
 
     stream_html = render_stream(published)
     update_index(stream_html)
