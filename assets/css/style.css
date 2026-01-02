@@ -509,6 +509,48 @@ a:focus {
   background: linear-gradient(90deg, var(--accent), transparent);
 }
 
+.categories {
+  margin-bottom: 24px;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: 0 10px 24px var(--shadow);
+}
+
+.categories__intro {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.categories__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--callout-bg);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.category-pill:hover,
+.category-pill:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--callout-bg) 80%, var(--accent) 20%);
+}
+
 .material-symbols-outlined {
   font-size: 1.1em;
   line-height: 1;
