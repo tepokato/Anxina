@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ANXiNA</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
@@ -73,238 +76,127 @@
 
     <section class="container">
       <h3 class="section-title">Stream de noticias</h3>
-      <div id="stream" class="stream">
-        <!-- posts:begin -->
-        <article class="post post--compact">
-          <a href="posts/anxina-paso-en-2025.html">
-            <img class="post__thumb" src="assets/img/2025anxina.png" alt="Composición editorial sobre el año 2025 en tecnología y cultura" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/anxina-paso-en-2025.html">ANXiNA paso en 2025</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-12-31</span>
-              <span>Tepokato · Tecnología</span>
+      <div class="stream-layout">
+        <div id="stream" class="stream stream-main">
+          <!-- posts:begin -->
+          <article class="post post--compact">
+            <a href="posts/anxina-paso-en-2025.html">
+              <img class="post__thumb" src="assets/img/2025anxina.png" alt="Composición editorial sobre el año 2025 en tecnología y cultura" />
+            </a>
+            <div class="post__body">
+              <h4>
+                <a class="post__title-link" href="posts/anxina-paso-en-2025.html">ANXiNA paso en 2025</a>
+              </h4>
+              <div class="post__meta">
+                <span>2025-12-31</span>
+                <span>Tepokato · Tecnología</span>
+              </div>
+              <p>2025 fue un año de ruido, promesas infladas y decisiones que sí importaron. En ANXiNA repasamos los mejores teléfonos calidad-precio, las series y películas que realmente dejaron huella, y las noticias de tecnología, ciencia y videojuegos que marcaron a Latinoamérica.</p>
+              <div class="post__tags">
+                <span>#tecnologia</span>
+                <span>#entretenimiento</span>
+              </div>
+              <div class="post__actions">
+                <a class="button" href="posts/anxina-paso-en-2025.html">Leer artículo</a>
+              </div>
             </div>
-            <p>2025 fue un año de ruido, promesas infladas y decisiones que sí importaron. En ANXiNA repasamos los mejores teléfonos calidad-precio, las series y películas que realmente dejaron huella, y las noticias de tecnología, ciencia y videojuegos que marcaron a Latinoamérica.</p>
-            <div class="post__tags">
-              <span>#tecnologia</span>
-              <span>#entretenimiento</span>
+          </article>
+          <article class="post post--compact">
+            <a href="posts/menos-ram-mas-discurso.html">
+              <img class="post__thumb" src="assets/img/ram-ia.png" alt="Ilustración de módulos de RAM junto a un chip con temática de inteligencia artificial" />
+            </a>
+            <div class="post__body">
+              <h4>
+                <a class="post__title-link" href="posts/menos-ram-mas-discurso.html">La redefinición de lo “suficiente”</a>
+              </h4>
+              <div class="post__meta">
+                <span>2025-12-29</span>
+                <span>Tepokato · IA</span>
+              </div>
+              <p>Menos RAM para ti. Más memoria para la IA.</p>
+              <div class="post__tags">
+                <span>#ia</span>
+              </div>
+              <div class="post__actions">
+                <a class="button" href="posts/menos-ram-mas-discurso.html">Leer artículo</a>
+              </div>
             </div>
-            <div class="post__actions">
-              <a class="button" href="posts/anxina-paso-en-2025.html">Leer artículo</a>
+          </article>
+          <article class="post post--compact">
+            <a href="posts/placeholder-post-8.html">
+              <img class="post__thumb" src="assets/img/placeholder-8.jpg" alt="Imagen de relleno para el post 8" />
+            </a>
+            <div class="post__body">
+              <h4>
+                <a class="post__title-link" href="posts/placeholder-post-8.html">Placeholder Post 8</a>
+              </h4>
+              <div class="post__meta">
+                <span>2025-01-08</span>
+                <span>Equipo ANXiNA · Diseño</span>
+              </div>
+              <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
+              <div class="post__tags">
+                <span>#placeholder</span>
+                <span>#maqueta</span>
+              </div>
+              <div class="post__actions">
+                <a class="button" href="posts/placeholder-post-8.html">Leer artículo</a>
+              </div>
+            </div>
+          </article>
+          <!-- posts:end -->
+        </div>
+        <aside class="stream-aside">
+          <div class="side-panel trends">
+            <h4 class="side-panel__title">Tendencias</h4>
+            <ol class="trends__list">
+              <li><span class="trends__index">01.</span> El futuro de los procesadores ARM</li>
+              <li><span class="trends__index">02.</span> Videojuegos indie latinoamericanos</li>
+              <li><span class="trends__index">03.</span> Ciberseguridad en 2026</li>
+              <li><span class="trends__index">04.</span> La crisis de los semiconductores</li>
+            </ol>
+          </div>
+          <div class="subscribe-card">
+            <h4>Suscríbete</h4>
+            <p>Recibe lo mejor de la semana sin el ruido de las redes sociales.</p>
+            <label class="subscribe-card__field">
+              <span class="sr-only">Correo electrónico</span>
+              <input type="email" placeholder="tu@email.com" />
+            </label>
+            <button class="subscribe-card__button" type="button">Unirse</button>
+          </div>
+          <div class="tag-cloud">
+            <h4 class="side-panel__title">Etiquetas populares</h4>
+            <div class="tag-cloud__items">
+              <span>#Hardware</span>
+              <span>#Software</span>
+              <span>#Opinión</span>
+              <span>#Gaming</span>
+              <span>#Cultura</span>
             </div>
           </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/menos-ram-mas-discurso.html">
-            <img class="post__thumb" src="assets/img/ram-ia.png" alt="Ilustración de módulos de RAM junto a un chip con temática de inteligencia artificial" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/menos-ram-mas-discurso.html">La redefinición de lo “suficiente”</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-12-29</span>
-              <span>Tepokato · IA</span>
-            </div>
-            <p>Menos RAM para ti. Más memoria para la IA.</p>
-            <div class="post__tags">
-              <span>#ia</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/menos-ram-mas-discurso.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-8.html">
-            <img class="post__thumb" src="assets/img/placeholder-8.jpg" alt="Imagen de relleno para el post 8" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-8.html">Placeholder Post 8</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-08</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-8.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-7.html">
-            <img class="post__thumb" src="assets/img/placeholder-7.jpg" alt="Imagen de relleno para el post 7" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-7.html">Placeholder Post 7</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-07</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-7.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-6.html">
-            <img class="post__thumb" src="assets/img/placeholder-6.jpg" alt="Imagen de relleno para el post 6" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-6.html">Placeholder Post 6</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-06</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-6.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-5.html">
-            <img class="post__thumb" src="assets/img/placeholder-5.jpg" alt="Imagen de relleno para el post 5" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-5.html">Placeholder Post 5</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-05</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-5.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-4.html">
-            <img class="post__thumb" src="assets/img/placeholder-4.jpg" alt="Imagen de relleno para el post 4" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-4.html">Placeholder Post 4</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-04</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-4.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-3.html">
-            <img class="post__thumb" src="assets/img/placeholder-3.jpg" alt="Imagen de relleno para el post 3" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-3.html">Placeholder Post 3</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-03</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-3.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-2.html">
-            <img class="post__thumb" src="assets/img/placeholder-2.jpg" alt="Imagen de relleno para el post 2" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-2.html">Placeholder Post 2</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-02</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-2.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-1.html">
-            <img class="post__thumb" src="assets/img/placeholder-1.jpg" alt="Imagen de relleno para el post 1" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-1.html">Placeholder Post 1</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-01</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-1.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <!-- posts:end -->
+        </aside>
+      </div>
+      <div class="load-more">
+        <button class="button secondary" type="button">+ Cargar más historias</button>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
+      <div class="footer__brand">
+        <span class="brand__badge footer__badge">ANXiNA</span>
+      </div>
       <p>
-        ANXiNA · Tecnología con criterio. Escríbenos en <a href="pages/contactanos.html">Contáctanos</a> o revisa nuestra
+        Tecnología con criterio. Escríbenos en <a href="pages/contactanos.html">Contáctanos</a> o revisa nuestra
         <a href="pages/politica_de_privacidad.html">política de privacidad</a>.
       </p>
+      <p class="footer__meta">© 2026 ANXiNA. Todos los derechos reservados.</p>
+      <div class="footer__social">
+        <span class="material-symbols-outlined" aria-hidden="true">rss_feed</span>
+        <span class="material-symbols-outlined" aria-hidden="true">language</span>
+      </div>
     </div>
   </footer>
   <script src="assets/js/central-time.js"></script>
