@@ -445,6 +445,23 @@ a:focus {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.button:hover {
+  background-color: color-mix(in srgb, var(--button-bg) 92%, #000);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .post--compact .button {
@@ -453,10 +470,18 @@ a:focus {
   color: #4b4032;
 }
 
+.post--compact .button:hover {
+  background-color: color-mix(in srgb, #f4efe9 92%, #000);
+}
+
 .button.secondary {
   background: transparent;
   color: var(--button-secondary-text);
   border-color: var(--accent);
+}
+
+.button.secondary:hover {
+  background-color: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 .section-title {
