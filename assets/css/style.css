@@ -662,7 +662,7 @@ a:focus {
   background: color-mix(in srgb, var(--callout-bg) 80%, var(--accent) 20%);
 }
 
-.material-symbols-outlined {
+.bi {
   font-size: 1.1em;
   line-height: 1;
   vertical-align: text-bottom;
