@@ -79,7 +79,11 @@ a:focus {
 
 .site-header {
   padding: 16px 0 20px;
+  background: var(--panel);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 6px 16px var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .brand {
