@@ -23,10 +23,17 @@
           <a href="#secciones">Secciones/Categorías</a>
           <a href="pages/contactanos.html">Contáctanos</a>
         </nav>
-        <label class="search" aria-label="Buscar en ANXiNA">
+        <form class="search" role="search" aria-label="Buscar en ANXiNA">
           <span class="search__prompt" aria-hidden="true">&gt;_</span>
-          <input type="search" placeholder="buscar..." />
-        </label>
+          <input
+            id="site-search"
+            type="search"
+            name="q"
+            placeholder="buscar..."
+            aria-controls="stream"
+            autocomplete="off"
+          />
+        </form>
         <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
           <span class="theme-toggle__icon material-symbols-outlined" aria-hidden="true">dark_mode</span>
           <span class="theme-toggle__switch" aria-hidden="true"></span>
@@ -72,6 +79,7 @@
         </div>
       </div>
       <h3 class="section-title">Stream de noticias</h3>
+      <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
       <div id="stream" class="stream">
         <!-- posts:begin -->
         <article class="post post--compact">
@@ -309,5 +317,6 @@
   </footer>
   <script src="assets/js/theme-toggle.js"></script>
   <script src="assets/js/nav-menu.js"></script>
+  <script src="assets/js/search-filter.js"></script>
 </body>
 </html>
