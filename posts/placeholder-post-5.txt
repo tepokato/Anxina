@@ -1,0 +1,36 @@
+Title:
+Placeholder Post 5
+Body:
+Este es un artículo de relleno para seguir diseñando la maqueta del sitio.
+
+## Sección de ejemplo
+Texto breve para simular contenido real y probar el ritmo visual del diseño.
+
+- Punto uno de relleno
+- Punto dos de relleno
+- Punto tres de relleno
+
+### Subtítulo
+Más texto de relleno para verificar espaciados, tamaños y jerarquía.
+Tags (comma-separated):
+placeholder,maqueta,diseno,visual
+Date Created (YYYY-MM-DD):
+2025-01-05
+Time Created (HH:MM, 24h):
+10:05
+Author:
+Equipo ANXiNA
+Summary/Excerpt:
+Artículo de relleno para pruebas de layout y componentes visuales.
+Featured Image URL:
+placeholder-5.jpg
+Featured Image Alt:
+Imagen de relleno para el post 5
+Slug (URL-friendly title):
+placeholder-post-5
+Category:
+Diseño
+Status (draft/published):
+published
+Additional Notes:
+
