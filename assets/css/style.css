@@ -283,12 +283,21 @@ a:focus {
   gap: 28px;
   align-items: center;
   position: relative;
+  box-shadow: 0 6px 16px rgba(31, 19, 8, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero__card:hover,
+.hero__card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(31, 19, 8, 0.14);
 }
 
 .hero__thumb {
   width: 100%;
   border-radius: 14px;
-  border: 1px solid #eee5da;
+  border: 1px solid var(--border);
+  outline: 1px solid var(--border);
   object-fit: cover;
   aspect-ratio: 4 / 5;
 }
@@ -358,6 +367,14 @@ a:focus {
   padding: 18px;
   display: grid;
   gap: 12px;
+  box-shadow: 0 6px 16px rgba(31, 19, 8, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post:hover,
+.post:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(31, 19, 8, 0.14);
 }
 
 .post--compact {
@@ -375,6 +392,7 @@ a:focus {
   width: 100%;
   border-radius: 10px;
   border: 1px solid var(--border);
+  outline: 1px solid var(--border);
   object-fit: cover;
   aspect-ratio: 16 / 9;
   box-shadow: 0 8px 18px var(--shadow);
