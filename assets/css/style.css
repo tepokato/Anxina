@@ -135,13 +135,14 @@ a:focus {
   letter-spacing: 0.08em;
   white-space: nowrap;
   overflow-x: auto;
-  padding-bottom: 2px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
 }
 
 .nav a {
   display: inline-flex;
   align-items: center;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-bottom: 2px solid transparent;
   color: var(--muted);
 }
@@ -168,7 +169,7 @@ a:focus {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-bottom: 2px solid transparent;
   color: inherit;
 }
