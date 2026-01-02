@@ -104,6 +104,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 {tags}
         </div>
       </article>
+{related_section}
     </div>
   </main>
 
@@ -143,6 +144,25 @@ STREAM_ITEM_TEMPLATE = """        <article class="post post--compact">
             </div>
           </div>
         </article>"""
+
+
+RELATED_ITEM_TEMPLATE = """          <article class="post post--compact">
+            <a href="{slug}.html">
+              <img class="post__thumb" src="{image}" alt="{alt}" />
+            </a>
+            <div class="post__body">
+              <h3>
+                <a class="post__title-link" href="{slug}.html">{title}</a>
+              </h3>
+              <div class="post__meta">
+                <span>{date}</span>
+                <span>{author} · {category}</span>
+              </div>
+              <div class="post__tags">
+{tags}
+              </div>
+            </div>
+          </article>"""
 
 
 def parse_post(path: Path) -> Post:
@@ -215,6 +235,10 @@ def format_tags(tags: Iterable[str], limit: int | None = None, indent: str = "  
     return "\n".join(f"{indent}<span>#{html.escape(tag)}</span>" for tag in normalized)
 
 
+def normalize_tag(tag: str) -> str:
+    return tag.strip().lower().replace(" ", "")
+
+
 def render_body_markdown(text: str) -> str:
     lines = text.splitlines()
     html_lines: list[str] = []
@@ -269,7 +293,38 @@ def render_body_markdown(text: str) -> str:
     return "\n".join(html_lines)
 
 
-def render_post(post: Post) -> str:
+def render_related_section(related_posts: list[Post]) -> str:
+    if not related_posts:
+        return ""
+
+    items: list[str] = []
+    for post in related_posts:
+        items.append(
+            RELATED_ITEM_TEMPLATE.format(
+                image=html.escape(normalize_post_image(post.featured_image)),
+                alt=html.escape(post.featured_image_alt),
+                title=html.escape(post.title),
+                date=html.escape(post.date),
+                author=html.escape(post.author),
+                category=html.escape(post.category),
+                tags=format_tags(post.tags, limit=2, indent="                "),
+                slug=html.escape(post.slug),
+            )
+        )
+
+    items_html = "\n".join(items)
+    return (
+        "\n"
+        "      <section class=\"related\">\n"
+        "        <h2 class=\"section-title\">Tal vez te interese</h2>\n"
+        "        <div class=\"related__grid\">\n"
+        f"{items_html}\n"
+        "        </div>\n"
+        "      </section>"
+    )
+
+
+def render_post(post: Post, related_posts: list[Post]) -> str:
     body_html = render_body_markdown(post.body)
     tags_html = format_tags(post.tags)
     return HTML_TEMPLATE.format(
@@ -282,6 +337,7 @@ def render_post(post: Post) -> str:
         featured_image_alt=html.escape(post.featured_image_alt),
         body=body_html,
         tags=tags_html,
+        related_section=render_related_section(related_posts),
     )
 
 
@@ -304,6 +360,28 @@ def render_stream(posts: list[Post]) -> str:
     return "\n".join(items)
 
 
+def select_related(post: Post, candidates: list[Post], limit: int = 3) -> list[Post]:
+    if not post.tags:
+        return []
+
+    base_tags = {normalize_tag(tag) for tag in post.tags if tag.strip()}
+    if not base_tags:
+        return []
+
+    scored: list[tuple[int, dt.datetime, Post]] = []
+    for candidate in candidates:
+        if candidate.slug == post.slug:
+            continue
+        candidate_tags = {normalize_tag(tag) for tag in candidate.tags if tag.strip()}
+        overlap = base_tags & candidate_tags
+        if not overlap:
+            continue
+        scored.append((len(overlap), candidate.datetime, candidate))
+
+    scored.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    return [candidate for _, _, candidate in scored[:limit]]
+
+
 def update_index(stream_html: str) -> None:
     content = INDEX_PATH.read_text(encoding="utf-8")
     start_marker = "<!-- posts:begin -->"
@@ -323,12 +401,14 @@ def main() -> None:
     posts = [parse_post(path) for path in POSTS_DIR.glob("*.txt")]
     posts_sorted = sorted(posts, key=lambda post: post.datetime, reverse=True)
 
+    published = [post for post in posts_sorted if post.status.lower() == "published"]
+
     for post in posts:
-        html_output = render_post(post)
+        related_posts = select_related(post, published)
+        html_output = render_post(post, related_posts)
         output_path = POSTS_DIR / f"{post.slug}.html"
         output_path.write_text(html_output, encoding="utf-8")
 
-    published = [post for post in posts_sorted if post.status.lower() == "published"]
     stream_html = render_stream(published)
     update_index(stream_html)
 

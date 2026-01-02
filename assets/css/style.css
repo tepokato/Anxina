@@ -458,6 +458,18 @@ a:focus {
   justify-content: flex-end;
 }
 
+.related {
+  margin-top: 28px;
+  display: grid;
+  gap: 16px;
+}
+
+.related__grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
 .button {
   border: 1px solid var(--button-bg);
   color: var(--button-text);
