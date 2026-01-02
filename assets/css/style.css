@@ -191,9 +191,11 @@ a:focus {
 
 .nav-menu__panel {
   position: absolute;
-  right: 0;
+  left: 0;
+  right: auto;
   top: calc(100% + 10px);
   min-width: 190px;
+  max-width: min(240px, 90vw);
   padding: 12px;
   border-radius: 10px;
   background: var(--panel);
@@ -202,6 +204,7 @@ a:focus {
   display: grid;
   gap: 10px;
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .nav-menu__panel a {
