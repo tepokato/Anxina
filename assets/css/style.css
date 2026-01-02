@@ -161,6 +161,11 @@ a:focus {
 
 .nav-menu {
   position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .nav-menu > summary {
@@ -200,13 +205,23 @@ a:focus {
 }
 
 .nav-menu__panel a {
+  display: inline-flex;
+  align-items: center;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
+  color: var(--muted);
 }
 
 .nav-menu__panel a.active,
 .nav-menu__panel a:hover {
   border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-menu__panel a.active::before {
+  content: "./";
+  margin-right: 4px;
+  color: var(--accent);
 }
 
 .sr-only {
@@ -647,6 +662,26 @@ a:focus {
   }
 
   .nav a {
+    width: 100%;
+    padding: 6px 0;
+  }
+
+  .nav-menu {
+    width: 100%;
+  }
+
+  .nav-menu > summary {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-menu__panel {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .nav-menu__panel a {
     width: 100%;
     padding: 6px 0;
   }
