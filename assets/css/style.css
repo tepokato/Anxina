@@ -84,6 +84,8 @@ a:focus {
   box-shadow: 0 6px 16px var(--shadow);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 20;
 }
 
 .brand {
