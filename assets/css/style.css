@@ -532,6 +532,37 @@ a:focus {
   margin: 0;
 }
 
+.author-card__social {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.author-card__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1f2933;
+  color: #f9f4ea;
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.author-card__social-link:hover,
+.author-card__social-link:focus {
+  background: var(--accent);
+  color: #1f2933;
+}
+
+.author-card__social-text {
+  font-weight: 600;
+}
+
 .post__actions {
   display: flex;
   gap: 12px;
