@@ -11,7 +11,9 @@
     toggle.setAttribute('aria-pressed', theme === 'light');
     toggle.setAttribute('aria-label', theme === 'light' ? 'Activar tema oscuro' : 'Activar tema claro');
     if (icon) {
-      icon.textContent = theme === 'light' ? 'light_mode' : 'dark_mode';
+      icon.classList.add('bi');
+      icon.classList.toggle('bi-sun-fill', theme === 'light');
+      icon.classList.toggle('bi-moon-fill', theme !== 'light');
     }
   };
 
