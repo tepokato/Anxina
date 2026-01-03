@@ -15,7 +15,7 @@
   --button-bg: #14110c;
   --button-text: #f8f1e6;
   --button-secondary-text: #d98321;
-  --font-body: "Inter", "Source Sans 3", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Inter", "Source Sans 3", system-ui, sans-serif;
   --font-ui: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
