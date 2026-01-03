@@ -495,15 +495,14 @@ a:focus {
 }
 
 .post--compact {
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
-  align-items: center;
+  align-items: start;
 }
 
 .post--compact .post__body {
   display: grid;
   gap: 12px;
-  min-height: 110px;
 }
 
 .post--compact .post__body p {
@@ -525,9 +524,9 @@ a:focus {
 }
 
 .post--compact .post__thumb {
-  width: 130px;
+  width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
 }
 
 .post__meta {
