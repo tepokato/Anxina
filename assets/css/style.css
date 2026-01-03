@@ -135,6 +135,12 @@ a:focus {
   border-radius: 12px;
 }
 
+@media (min-width: 721px) {
+  .header-meta {
+    justify-content: flex-end;
+  }
+}
+
 .nav {
   display: flex;
   flex-wrap: nowrap;
