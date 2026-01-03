@@ -455,7 +455,7 @@ a:focus {
 
 .post--compact .post__body {
   display: grid;
-  gap: 10px;
+  gap: 12px;
   min-height: 110px;
 }
 
@@ -464,6 +464,7 @@ a:focus {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 0;
 }
 
 .post__thumb {
@@ -487,7 +488,7 @@ a:focus {
   flex-wrap: wrap;
   gap: 14px;
   font-size: 0.82rem;
-  color: var(--muted);
+  color: var(--accent-strong);
 }
 
 .post__toc {
@@ -620,6 +621,9 @@ a:focus {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  padding-top: 12px;
+  margin-top: 4px;
 }
 
 .post--compact .post__actions {
