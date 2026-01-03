@@ -147,11 +147,7 @@ a:focus {
   gap: 16px;
   margin-top: 24px;
   flex-wrap: wrap;
-  padding: 18px 16px 14px;
-  background: var(--post-bg);
-  border: 1px solid var(--border);
-  border-top: 1px solid var(--border);
-  border-radius: 12px;
+  padding: 0;
 }
 
 @media (min-width: 721px) {
@@ -1163,11 +1159,7 @@ a:focus {
     gap: 12px;
     width: 100%;
     margin-top: 20px;
-    padding: 20px 16px 16px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--post-bg);
-    box-shadow: 0 10px 24px var(--shadow);
+    padding: 0;
   }
 
   .nav {
