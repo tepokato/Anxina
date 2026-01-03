@@ -1,372 +1,251 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ANXiNA</title>
-  <meta name="description" content="Noticias de tecnología, ciencia y videojuegos con señal clara." />
+  <meta name="description" content="Independent digital space dedicated to technology, science, and culture in Latin America." />
   <link rel="canonical" href="index.html" />
   <meta property="og:site_name" content="ANXiNA" />
   <meta property="og:title" content="ANXiNA" />
-  <meta property="og:description" content="Noticias de tecnología, ciencia y videojuegos con señal clara." />
+  <meta property="og:description" content="Independent digital space dedicated to technology, science, and culture in Latin America." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="index.html" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="ANXiNA" />
-  <meta name="twitter:description" content="Noticias de tecnología, ciencia y videojuegos con señal clara." />
-  <meta name="theme-color" content="#f6efe6" />
+  <meta name="twitter:description" content="Independent digital space dedicated to technology, science, and culture in Latin America." />
+  <meta name="theme-color" content="#1f170f" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "ANXiNA",
-      "url": "index.html",
-      "description": "Noticias de tecnología, ciencia y videojuegos con señal clara."
-    }
-  </script>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="container">
-      <div class="brand">
-        <a class="brand__link" href="index.html">
-          <div class="brand__badge">
-            <h1 class="brand__title">ANXiNA</h1>
-          </div>
-        </a>
-        <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
+    <div class="container header__inner">
+      <div class="logo">
+        <span class="logo__mark"><i class="bi bi-hexagon-fill" aria-hidden="true"></i></span>
+        <span class="logo__word">ANXiNA</span>
       </div>
-      <div class="header-meta">
-        <details class="nav-menu">
-          <summary><i class="bi bi-list" aria-hidden="true"></i><span>Menú</span></summary>
-          <nav class="nav-menu__panel" aria-label="Navegación principal">
-            <a class="active" href="index.html" aria-current="page">Inicio</a>
-            <a href="#secciones">Secciones/Categorías</a>
-            <a href="pages/contactanos.html">Contáctanos</a>
-          </nav>
-        </details>
-        <form class="search" role="search" action="search.html" method="get" aria-label="Buscar en ANXiNA">
-          <span class="search__prompt" aria-hidden="true">&gt;_</span>
-          <input
-            id="site-search"
-            type="search"
-            name="q"
-            placeholder="buscar..."
-            aria-controls="stream"
-            autocomplete="off"
-          />
-        </form>
-        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
-          <i class="theme-toggle__icon bi bi-moon-fill" aria-hidden="true"></i>
-          <span class="theme-toggle__switch" aria-hidden="true"></span>
-        </button>
-      </div>
+      <nav class="nav" aria-label="Primary">
+        <a class="active" href="index.html">Technology</a>
+        <a href="#science">Science</a>
+        <a href="#games">Video Games</a>
+        <a href="#analysis">Analysis</a>
+        <a href="#podcast">Podcast</a>
+      </nav>
+      <form class="search" role="search" aria-label="Search ANXiNA">
+        <i class="bi bi-search" aria-hidden="true"></i>
+        <input type="search" name="q" placeholder="Search articles..." />
+      </form>
     </div>
   </header>
 
-  <main id="contenido">
+  <main id="main">
     <section class="hero">
       <div class="container hero__grid">
-        <!-- portada:begin -->
-        <article class="hero__card">
-          <a href="posts/pebble-round-2-volver-a-lo-esencial.html">
-            <img class="hero__thumb" src="assets/img/pebe1.png" alt="pebe2.png" />
-          </a>
-          <div class="hero__content">
-            <div class="badge">En portada</div>
-            <h2>
-              <a class="post__title-link" href="posts/pebble-round-2-volver-a-lo-esencial.html">Pebble Round 2: volver a lo esencial también es avanzar</a>
-            </h2>
-            <p>
-              Un smartwatch que va a contracorriente.
-La Pebble Round 2 apuesta por diseño delgado, batería de hasta 14 días y software abierto, dejando de lado el exceso de funciones. Un recordatorio de que volver a lo esencial también puede ser innovación.
-            </p>
-            <div class="post__actions">
-              <a class="button" href="posts/pebble-round-2-volver-a-lo-esencial.html">Leer artículo</a>
-            </div>
+        <div class="hero__media">
+          <img src="assets/img/2025anxina.png" alt="Sao Paulo skyline under a bright sky" />
+        </div>
+        <div class="hero__content">
+          <div class="hero__meta">
+            <span class="pill">Analysis</span>
+            <span>Oct 24, 2023 · 8 min read</span>
           </div>
-        </article>
-        <!-- portada:end -->
+          <h1>The Silicon Valley of the South: How São Paulo is Redefining Tech</h1>
+          <p>
+            An in-depth look at how Brazil's financial capital is transforming into a global innovation hub,
+            challenging traditional tech giants with unique regional solutions.
+          </p>
+          <a class="button" href="posts/anxina-paso-en-2025.html">Read Analysis <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+        </div>
       </div>
     </section>
 
-    <section id="secciones" class="container">
-      <div class="categories">
-        <h3 class="section-title">Categorías</h3>
-        <p class="categories__intro">Explora las etiquetas destacadas en el stream y salta directo a cada tema.</p>
-        <div class="categories__list" aria-label="Categorías principales">
-          <a class="category-pill" href="pages/categoria-tecnologia.html">#tecnologia</a>
-          <a class="category-pill" href="pages/categoria-entretenimiento.html">#entretenimiento</a>
-          <a class="category-pill" href="pages/categoria-ia.html">#ia</a>
-          <a class="category-pill" href="pages/categoria-placeholder.html">#placeholder</a>
-          <a class="category-pill" href="pages/categoria-maqueta.html">#maqueta</a>
+    <section class="deep-dive" id="analysis">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The Deep Dive</h2>
+        </div>
+        <div class="deep-dive__grid">
+          <article class="card" id="games">
+            <img src="assets/img/pebe2.png" alt="Design team reviewing a game project" />
+            <div class="card__body">
+              <div class="card__meta">
+                <span class="tag">Gaming</span>
+                <span>8 min read</span>
+              </div>
+              <h3>Indie Devs in Argentina: Creativity Under Constraint</h3>
+              <p>How economic pressures are fueling a new wave of innovative game mechanics.</p>
+            </div>
+          </article>
+          <article class="card" id="technology">
+            <img src="assets/img/ram-ia.png" alt="5G tower against an orange sunset" />
+            <div class="card__body">
+              <div class="card__meta">
+                <span class="tag">Tech</span>
+                <span>6 min read</span>
+              </div>
+              <h3>The State of 5G in Mexico</h3>
+              <p>Infrastructure challenges, monopolies, and the race for connectivity.</p>
+            </div>
+          </article>
+          <article class="card" id="science">
+            <img src="assets/img/pebe1.png" alt="Observatory domes under the night sky" />
+            <div class="card__body">
+              <div class="card__meta">
+                <span class="tag">Science</span>
+                <span>10 min read</span>
+              </div>
+              <h3>LatAm's Race to the Stars</h3>
+              <p>Collaborative efforts between Chile, Brazil, and international agencies.</p>
+            </div>
+          </article>
         </div>
       </div>
-      <h3 class="section-title">Stream de noticias</h3>
-      <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
-      <div id="stream" class="stream">
-        <!-- posts:begin -->
-        <article class="post post--compact">
-          <a href="posts/pebble-round-2-volver-a-lo-esencial.html">
-            <img class="post__thumb" src="assets/img/pebe1.png" alt="pebe2.png" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/pebble-round-2-volver-a-lo-esencial.html">Pebble Round 2: volver a lo esencial también es avanzar</a>
-            </h4>
-            <div class="post__meta">
-              <span>2026-01-02</span>
-              <span>Tepokato · Wearables</span>
-            </div>
-            <p>Un smartwatch que va a contracorriente.
-La Pebble Round 2 apuesta por diseño delgado, batería de hasta 14 días y software abierto, dejando de lado el exceso de funciones. Un recordatorio de que volver a lo esencial también puede ser innovación.</p>
-            <div class="post__tags">
-              <span>#pebble</span>
-              <span>#smartwatch</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/pebble-round-2-volver-a-lo-esencial.html">Leer artículo</a>
-            </div>
+    </section>
+
+    <section class="latest" id="podcast">
+      <div class="container">
+        <div class="latest__header">
+          <h2>Latest Stories</h2>
+          <a class="latest__link" href="pages/categoria-tecnologia.html">View All</a>
+        </div>
+        <div class="latest__grid">
+          <div class="latest__list">
+            <article class="story">
+              <img src="assets/img/2025anxina.png" alt="Salt flats in South America" />
+              <div class="story__content">
+                <div class="story__meta">
+                  <span class="tag">Science</span>
+                  <span>12 min read</span>
+                </div>
+                <h3>Lithium Triangle: The Battle for South America's White Gold</h3>
+                <p>Exploring the geopolitical and environmental impact of massive lithium extraction projects in Chile, Bolivia, and Argentina.</p>
+                <a class="story__link" href="posts/anxina-paso-en-2025.html">Read Article <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+            <article class="story">
+              <img src="assets/img/pebe2.png" alt="Arena filled with esports fans" />
+              <div class="story__content">
+                <div class="story__meta">
+                  <span class="tag">Video Games</span>
+                  <span>5 min read</span>
+                </div>
+                <h3>Esports in Brazil: More Than Just a Game</h3>
+                <p>Why major international teams are recruiting from Rio's favelas and how local tournaments are outshining global events.</p>
+                <a class="story__link" href="posts/pebble-round-2-volver-a-lo-esencial.html">Read Article <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+            <article class="story">
+              <img src="assets/img/ram-ia.png" alt="Laptop with fintech dashboard" />
+              <div class="story__content">
+                <div class="story__meta">
+                  <span class="tag">Startups</span>
+                  <span>7 min read</span>
+                </div>
+                <h3>Colombia's Fintech Revolution</h3>
+                <p>How regulatory sandboxes in Bogotá are allowing financial startups to thrive and bank the unbanked.</p>
+                <a class="story__link" href="posts/menos-ram-mas-discurso.html">Read Article <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </article>
+            <button class="ghost-button" type="button">Load More Articles</button>
           </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/anxina-paso-en-2025.html">
-            <img class="post__thumb" src="assets/img/2025anxina.png" alt="Composición editorial sobre el año 2025 en tecnología y cultura" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/anxina-paso-en-2025.html">ANXiNA paso en 2025</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-12-31</span>
-              <span>Tepokato · Tecnología</span>
+
+          <aside class="sidebar">
+            <div class="newsletter">
+              <div class="newsletter__badge"><i class="bi bi-envelope" aria-hidden="true"></i> Weekly Digest</div>
+              <h3>Don't miss the future of LatAm Tech.</h3>
+              <p>Curated analysis delivered to your inbox every Tuesday. No spam, ever.</p>
+              <label class="sr-only" for="email">Your email address</label>
+              <input id="email" type="email" placeholder="Your email address" />
+              <button class="button" type="button">Subscribe</button>
             </div>
-            <p>2025 fue un año de ruido, promesas infladas y decisiones que sí importaron. En ANXiNA repasamos los mejores teléfonos calidad-precio, las series y películas que realmente dejaron huella, y las noticias de tecnología, ciencia y videojuegos que marcaron a Latinoamérica.</p>
-            <div class="post__tags">
-              <span>#tecnologia</span>
-              <span>#entretenimiento</span>
+
+            <div class="trending">
+              <h4>Trending in LatAm</h4>
+              <ol>
+                <li>
+                  <span class="trend__index">01</span>
+                  <div>
+                    <strong>Nubank reaches 80 million customers</strong>
+                    <span>Fintech · Brazil</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="trend__index">02</span>
+                  <div>
+                    <strong>Water scarcity impacts data centers in Chile</strong>
+                    <span>Environment · Chile</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="trend__index">03</span>
+                  <div>
+                    <strong>Mercado Libre invests heavily in AI logistics</strong>
+                    <span>Business · Regional</span>
+                  </div>
+                </li>
+                <li>
+                  <span class="trend__index">04</span>
+                  <div>
+                    <strong>New archeological findings via Lidar in the Amazon</strong>
+                    <span>Science · Amazon</span>
+                  </div>
+                </li>
+              </ol>
             </div>
-            <div class="post__actions">
-              <a class="button" href="posts/anxina-paso-en-2025.html">Leer artículo</a>
+
+            <div class="social">
+              <h4>Follow Us</h4>
+              <div class="social__icons">
+                <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              </div>
             </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/menos-ram-mas-discurso.html">
-            <img class="post__thumb" src="assets/img/ram-ia.png" alt="Ilustración de módulos de RAM junto a un chip con temática de inteligencia artificial" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/menos-ram-mas-discurso.html">La redefinición de lo “suficiente”</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-12-29</span>
-              <span>Tepokato · IA</span>
-            </div>
-            <p>Menos RAM para ti. Más memoria para la IA.</p>
-            <div class="post__tags">
-              <span>#ia</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/menos-ram-mas-discurso.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-8.html">
-            <img class="post__thumb" src="assets/img/placeholder-8.jpg" alt="Imagen de relleno para el post 8" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-8.html">Placeholder Post 8</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-08</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-8.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-7.html">
-            <img class="post__thumb" src="assets/img/placeholder-7.jpg" alt="Imagen de relleno para el post 7" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-7.html">Placeholder Post 7</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-07</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-7.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-6.html">
-            <img class="post__thumb" src="assets/img/placeholder-6.jpg" alt="Imagen de relleno para el post 6" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-6.html">Placeholder Post 6</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-06</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-6.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-5.html">
-            <img class="post__thumb" src="assets/img/placeholder-5.jpg" alt="Imagen de relleno para el post 5" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-5.html">Placeholder Post 5</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-05</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-5.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-4.html">
-            <img class="post__thumb" src="assets/img/placeholder-4.jpg" alt="Imagen de relleno para el post 4" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-4.html">Placeholder Post 4</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-04</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-4.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-3.html">
-            <img class="post__thumb" src="assets/img/placeholder-3.jpg" alt="Imagen de relleno para el post 3" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-3.html">Placeholder Post 3</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-03</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-3.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-2.html">
-            <img class="post__thumb" src="assets/img/placeholder-2.jpg" alt="Imagen de relleno para el post 2" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-2.html">Placeholder Post 2</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-02</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-2.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <article class="post post--compact">
-          <a href="posts/placeholder-post-1.html">
-            <img class="post__thumb" src="assets/img/placeholder-1.jpg" alt="Imagen de relleno para el post 1" />
-          </a>
-          <div class="post__body">
-            <h4>
-              <a class="post__title-link" href="posts/placeholder-post-1.html">Placeholder Post 1</a>
-            </h4>
-            <div class="post__meta">
-              <span>2025-01-01</span>
-              <span>Equipo ANXiNA · Diseño</span>
-            </div>
-            <p>Artículo de relleno para pruebas de layout y componentes visuales.</p>
-            <div class="post__tags">
-              <span>#placeholder</span>
-              <span>#maqueta</span>
-            </div>
-            <div class="post__actions">
-              <a class="button" href="posts/placeholder-post-1.html">Leer artículo</a>
-            </div>
-          </div>
-        </article>
-        <!-- posts:end -->
+          </aside>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p>
-        ANXiNA · Tecnología con criterio. Escríbenos en <a href="pages/contactanos.html">Contáctanos</a>. Consulta nuestra
-        <a href="pages/politica_de_privacidad.html">política de privacidad</a> y los
-        <a href="pages/terminos_de_servicio.html">términos</a>.
-      </p>
+    <div class="container footer__grid">
+      <div>
+        <div class="logo logo--footer">
+          <span class="logo__mark"><i class="bi bi-hexagon-fill" aria-hidden="true"></i></span>
+          <span class="logo__word">ANXiNA</span>
+        </div>
+        <p>Independent digital space dedicated to technology, science, and video games in Latin America. In-depth analysis, no sensationalism.</p>
+      </div>
+      <div>
+        <h5>Sections</h5>
+        <ul>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#science">Science</a></li>
+          <li><a href="#games">Video Games</a></li>
+          <li><a href="#analysis">Analysis</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="pages/contactanos.html">About Us</a></li>
+          <li><a href="pages/contactanos.html">Careers</a></li>
+          <li><a href="pages/contactanos.html">Contact</a></li>
+          <li><a href="pages/terminos_de_servicio.html">Code of Ethics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="pages/politica_de_privacidad.html">Privacy Policy</a></li>
+          <li><a href="pages/terminos_de_servicio.html">Terms of Service</a></li>
+          <li><a href="pages/politica_de_privacidad.html">Cookie Settings</a></li>
+        </ul>
+      </div>
     </div>
+    <p class="footer__bottom">© 2023 ANXiNA Media. All rights reserved.</p>
   </footer>
-  <script src="assets/js/theme-toggle.js"></script>
-  <script src="assets/js/nav-menu.js"></script>
-  <script src="assets/js/search-filter.js"></script>
 </body>
 </html>
