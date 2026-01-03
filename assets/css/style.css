@@ -1199,6 +1199,10 @@ a:focus {
     background: var(--callout-bg);
   }
 
+  .nav-menu[open] > summary {
+    box-shadow: none;
+  }
+
   .nav-menu__panel {
     position: static;
     width: 100%;
