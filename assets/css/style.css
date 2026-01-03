@@ -365,6 +365,11 @@ a:focus {
   box-shadow: 0 12px 24px rgba(31, 19, 8, 0.14);
 }
 
+.hero__card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .hero__thumb {
   width: 100%;
   border-radius: 10px;
@@ -449,6 +454,11 @@ a:focus {
   box-shadow: 0 12px 24px rgba(31, 19, 8, 0.14);
 }
 
+.post:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .post--compact {
   grid-template-columns: auto 1fr;
   gap: 20px;
@@ -508,6 +518,20 @@ a:focus {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__card,
+  .post {
+    transition: none;
+  }
+
+  .hero__card:hover,
+  .hero__card:focus-within,
+  .post:hover,
+  .post:focus-within {
+    transform: none;
+  }
 }
 
 .post__toc ol {
