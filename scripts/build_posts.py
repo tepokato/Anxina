@@ -98,15 +98,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
     <div class="container">
-      <div class="brand">
-        <a class="brand__link" href="../index.html">
-          <div class="brand__badge">
-            <h1 class="brand__title">ANXiNA</h1>
-          </div>
-        </a>
-        <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
-      </div>
-      <div class="header-meta">
+      <div class="header-top">
+        <div class="brand">
+          <a class="brand__link" href="../index.html">
+            <div class="brand__badge">
+              <h1 class="brand__title">ANXiNA</h1>
+            </div>
+          </a>
+        </div>
         <nav class="nav" aria-label="Navegación principal">
           <a href="../index.html">Inicio</a>
           <a href="../pages/contactanos.html">Contáctanos</a>
@@ -114,6 +113,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <a href="../pages/benefactores.html">Benefactores</a>
           <a href="../pages/terminos_de_servicio.html">Términos</a>
         </nav>
+      </div>
+      <div class="header-meta">
         <label class="search" aria-label="Buscar en ANXiNA">
           <span class="search__prompt" aria-hidden="true">&gt;_</span>
           <input type="search" placeholder="buscar..." />

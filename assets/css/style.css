@@ -90,6 +90,14 @@ a:focus {
   z-index: 20;
 }
 
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -119,6 +127,17 @@ a:focus {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.nav-inline {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-wrap: wrap;
 }
 
 .header-meta {
@@ -154,7 +173,8 @@ a:focus {
   border-bottom: 1px solid var(--border);
 }
 
-.nav a {
+.nav a,
+.nav-inline a {
   display: inline-flex;
   align-items: center;
   padding-bottom: 4px;
@@ -163,19 +183,23 @@ a:focus {
 }
 
 .nav a.active,
-.nav a:hover {
+.nav a:hover,
+.nav-inline a.active,
+.nav-inline a:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav-inline a:focus-visible {
   border-color: var(--accent);
   color: var(--accent);
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
-.nav a.active::before {
+.nav a.active::before,
+.nav-inline a.active::before {
   content: "./";
   margin-right: 4px;
   color: var(--accent);
@@ -188,6 +212,7 @@ a:focus {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  display: none;
 }
 
 .nav-menu > summary {
@@ -1117,6 +1142,12 @@ a:focus {
     padding: 20px 0 12px;
   }
 
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .brand {
     flex-direction: column;
     align-items: flex-start;
@@ -1145,12 +1176,17 @@ a:focus {
     gap: 8px;
   }
 
+  .nav-inline {
+    display: none;
+  }
+
   .nav a {
     width: 100%;
     padding: 6px 0;
   }
 
   .nav-menu {
+    display: inline-flex;
     width: 100%;
   }
 
@@ -1304,6 +1340,7 @@ a:focus {
 }
 
 .nav,
+.nav-inline,
 .nav-menu,
 .nav-menu__panel,
 .brand__badge,
