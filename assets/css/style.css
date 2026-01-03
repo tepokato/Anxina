@@ -780,6 +780,12 @@ a:focus {
 
   .header-meta {
     gap: 12px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--post-bg);
+    box-shadow: 0 10px 24px var(--shadow);
   }
 
   .nav {
@@ -800,17 +806,29 @@ a:focus {
   .nav-menu > summary {
     width: 100%;
     justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--callout-bg);
   }
 
   .nav-menu__panel {
     position: static;
     width: 100%;
     margin-top: 8px;
+    border-radius: 12px;
+    padding: 14px;
   }
 
   .nav-menu__panel a {
     width: 100%;
-    padding: 6px 0;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  .nav-menu__panel a:hover,
+  .nav-menu__panel a:focus-visible {
+    background: var(--callout-bg);
   }
 
   .header-meta {
