@@ -126,11 +126,12 @@ a:focus {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 24px;
   flex-wrap: wrap;
-  padding: 12px 16px;
+  padding: 18px 16px 14px;
   background: var(--post-bg);
   border: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   border-radius: 12px;
 }
 
@@ -1124,7 +1125,8 @@ a:focus {
   .header-meta {
     gap: 12px;
     width: 100%;
-    padding: 16px;
+    margin-top: 20px;
+    padding: 20px 16px 16px;
     border-radius: 12px;
     border: 1px solid var(--border);
     background: var(--post-bg);
