@@ -272,6 +272,37 @@ a:focus {
   outline: none;
   font-size: 0.95rem;
   min-width: 200px;
+  flex: 1 1 auto;
+}
+
+.search button {
+  border: 1px solid var(--button-bg);
+  background: var(--button-bg);
+  color: var(--button-text);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.search button:hover {
+  background-color: color-mix(in srgb, var(--button-bg) 92%, #000);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+}
+
+.search button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.search button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .theme-toggle {
@@ -1118,6 +1149,10 @@ a:focus {
 
   .search input {
     min-width: 0;
+    width: 100%;
+  }
+
+  .search button {
     width: 100%;
   }
 
