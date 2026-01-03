@@ -15,7 +15,8 @@
   --button-bg: #14110c;
   --button-text: #f8f1e6;
   --button-secondary-text: #d98321;
-  font-family: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-body: "Inter", "Source Sans 3", system-ui, sans-serif;
+  --font-ui: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 [data-theme="dark"] {
@@ -44,7 +45,8 @@ body {
   margin: 0;
   background: var(--page-bg);
   color: var(--text);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  line-height: 1.7;
 }
 
 a {
@@ -1254,4 +1256,33 @@ a:focus {
   .footer {
     padding: 20px 0 32px;
   }
+}
+.hero__content p,
+.post__body p,
+.categories__intro {
+  font-family: var(--font-body);
+  line-height: 1.7;
+}
+
+.nav,
+.nav-menu,
+.nav-menu__panel,
+.brand__badge,
+.badge,
+.post__meta,
+.post__toc-title,
+.post__tags span,
+.button,
+.search button,
+.search input,
+.theme-toggle,
+.section-title,
+.category-pill,
+.filter-panel__title,
+.filter-chip,
+.search-results__label,
+.result-card__meta,
+.result-card__badge,
+.search__prompt {
+  font-family: var(--font-ui);
 }
