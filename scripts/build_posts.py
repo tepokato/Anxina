@@ -69,9 +69,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ANXiNA · {title}</title>
+  <meta name="description" content="{description}" />
+  <link rel="canonical" href="{canonical_url}" />
+  <meta property="og:site_name" content="ANXiNA" />
+  <meta property="og:title" content="{og_title}" />
+  <meta property="og:description" content="{og_description}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{og_url}" />
+  <meta property="og:image" content="{og_image}" />
+  <meta property="og:image:alt" content="{og_image_alt}" />
+  <meta property="article:published_time" content="{published_time}" />
+  <meta property="article:modified_time" content="{published_time}" />
+  <meta property="article:author" content="{article_author}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{og_title}" />
+  <meta name="twitter:description" content="{og_description}" />
+  <meta name="twitter:image" content="{og_image}" />
+  <meta name="twitter:image:alt" content="{og_image_alt}" />
+  <meta name="theme-color" content="#f6efe6" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <script type="application/ld+json">
+{json_ld}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -374,11 +395,46 @@ def render_related_section(related_posts: list[Post]) -> str:
     )
 
 
+def build_post_json_ld(post: Post, author: Author | None, canonical_url: str) -> str:
+    author_name = author.name if author else post.author
+    description = post.summary.strip() or post.title
+    image_url = normalize_post_image(post.featured_image)
+    data = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": canonical_url},
+        "headline": post.title,
+        "description": description,
+        "image": [image_url] if image_url else [],
+        "datePublished": post.datetime.isoformat(),
+        "dateModified": post.datetime.isoformat(),
+        "author": {"@type": "Person", "name": author_name},
+        "publisher": {"@type": "Organization", "name": "ANXiNA"},
+    }
+    return json.dumps(data, ensure_ascii=False, indent=2)
+
+
 def render_post(post: Post, related_posts: list[Post], author: Author | None) -> str:
     body_html = render_body_markdown(post.body)
     tags_html = format_tags(post.tags)
+    canonical_url = f"{post.slug}.html"
+    description = post.summary.strip() or post.title
+    og_image = normalize_post_image(post.featured_image)
+    published_time = post.datetime.isoformat()
+    article_author = author.name if author else post.author
+    json_ld = build_post_json_ld(post, author, canonical_url)
     return HTML_TEMPLATE.format(
         title=html.escape(post.title),
+        description=html.escape(description),
+        canonical_url=html.escape(canonical_url),
+        og_title=html.escape(post.title),
+        og_description=html.escape(description),
+        og_url=html.escape(canonical_url),
+        og_image=html.escape(og_image),
+        og_image_alt=html.escape(post.featured_image_alt),
+        published_time=html.escape(published_time),
+        article_author=html.escape(article_author),
+        json_ld=json_ld,
         category=html.escape(post.category),
         date=html.escape(post.date),
         time=html.escape(post.time),
