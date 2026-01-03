@@ -103,8 +103,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <div class="brand__badge">
             <h1 class="brand__title">ANXiNA</h1>
           </div>
-          <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
         </a>
+        <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
       </div>
       <div class="header-meta">
         <nav class="nav" aria-label="Navegación principal">
