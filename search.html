@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ANXiNA · Resultados de búsqueda</title>
+  <meta name="description" content="Resultados de búsqueda en ANXiNA." />
+  <link rel="canonical" href="search.html" />
+  <meta property="og:site_name" content="ANXiNA" />
+  <meta property="og:title" content="ANXiNA · Resultados de búsqueda" />
+  <meta property="og:description" content="Encuentra noticias, reseñas y reportajes en ANXiNA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="search.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ANXiNA · Resultados de búsqueda" />
+  <meta name="twitter:description" content="Encuentra noticias, reseñas y reportajes en ANXiNA." />
+  <meta name="theme-color" content="#0c0a06" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <a class="brand__link" href="index.html">
+          <div class="brand__badge">
+            <h1 class="brand__title">ANXiNA</h1>
+          </div>
+          <p class="brand__subtitle">Noticias de tecnología, ciencia y videojuegos con señal clara.</p>
+        </a>
+      </div>
+      <div class="header-meta">
+        <details class="nav-menu">
+          <summary><i class="bi bi-list" aria-hidden="true"></i><span>Menú</span></summary>
+          <nav class="nav-menu__panel" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#secciones">Secciones/Categorías</a>
+            <a href="pages/contactanos.html">Contáctanos</a>
+          </nav>
+        </details>
+        <form class="search" role="search" action="search.html" method="get" aria-label="Buscar en ANXiNA">
+          <span class="search__prompt" aria-hidden="true">&gt;_</span>
+          <input
+            type="search"
+            name="q"
+            placeholder="buscar..."
+            autocomplete="off"
+          />
+        </form>
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
+          <i class="theme-toggle__icon bi bi-moon-fill" aria-hidden="true"></i>
+          <span class="theme-toggle__switch" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="search-page">
+    <div class="container">
+      <section class="search-page__hero" aria-label="Búsqueda principal">
+        <form class="search-bar" action="search.html" method="get">
+          <i class="bi bi-search search-bar__icon" aria-hidden="true"></i>
+          <input
+            type="search"
+            name="q"
+            placeholder="Busca artículos, autores o temas"
+            aria-label="Buscar en ANXiNA"
+            autocomplete="off"
+          />
+          <span class="search-bar__clear" aria-hidden="true">
+            <i class="bi bi-x-lg"></i>
+          </span>
+        </form>
+      </section>
+
+      <div class="search-layout">
+        <aside class="filter-panel" aria-label="Filtrar resultados">
+          <p class="filter-panel__title">Filtrar resultados</p>
+
+          <div class="filter-group">
+            <button class="filter-group__toggle" type="button" aria-expanded="true">
+              Categoría
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="filter-options">
+              <label class="filter-option">
+                <input type="checkbox" checked />
+                Videojuegos
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" />
+                Tecnología
+              </label>
+              <label class="filter-option">
+                <input type="checkbox" />
+                Ciencia
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group__toggle" type="button" aria-expanded="false">
+              Tipo de contenido
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <div class="filter-group">
+            <button class="filter-group__toggle" type="button" aria-expanded="false">
+              Rango de fechas
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </aside>
+
+        <section class="search-results" aria-live="polite">
+          <header class="search-results__header">
+            <div>
+              <p class="search-results__label">Resultados para</p>
+              <h1 class="search-results__title">“<span data-search-term>Indie Development in Brazil</span>”</h1>
+              <p class="search-results__count" data-results-count>Se encontraron 4 artículos.</p>
+            </div>
+            <div class="search-results__controls" role="group" aria-label="Ordenar resultados">
+              <button class="filter-chip is-active" type="button">
+                Relevancia
+                <i class="bi bi-sliders" aria-hidden="true"></i>
+              </button>
+              <button class="filter-chip" type="button">Más recientes</button>
+            </div>
+          </header>
+
+          <div class="search-results__list">
+            <article class="result-card">
+              <img class="result-card__thumb" src="assets/img/pebe1.png" alt="Pantalla con código en una laptop" />
+              <div class="result-card__content">
+                <div class="result-card__meta">
+                  <span class="result-card__badge">Videojuegos</span>
+                  <span>Hace 2 días</span>
+                </div>
+                <h2 class="result-card__title">El estado del desarrollo indie en Brasil: panorama 2024</h2>
+                <p>
+                  Un vistazo a estudios locales como AQUiRIS y Long Hat House mientras navegan el mercado global y mantienen
+                  identidad cultural. Conversamos con 15 desarrolladores en São Paulo.
+                </p>
+                <div class="result-card__footer">
+                  <span>Juan Perez</span>
+                  <span>·</span>
+                  <span>8 min de lectura</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="result-card">
+              <img class="result-card__thumb" src="assets/img/2025anxina.png" alt="Composición editorial con dispositivos y gráficos" />
+              <div class="result-card__content">
+                <div class="result-card__meta">
+                  <span class="result-card__badge result-card__badge--tech">Tech</span>
+                  <span>Oct 12, 2023</span>
+                </div>
+                <h2 class="result-card__title">Hardware Giants mira a Latinoamérica como nuevo hub de manufactura</h2>
+                <p>
+                  Con el cambio en cadenas globales, Brasil y México emergen como polos clave para ensamblaje de
+                  semiconductores. ¿Qué significa para el ecosistema indie?
+                </p>
+                <div class="result-card__footer">
+                  <span>Maria Costa</span>
+                  <span>·</span>
+                  <span>5 min de lectura</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="result-card">
+              <img class="result-card__thumb" src="assets/img/ram-ia.png" alt="Ilustración de módulos de RAM en contexto de IA" />
+              <div class="result-card__content">
+                <div class="result-card__meta">
+                  <span class="result-card__badge result-card__badge--science">Ciencia</span>
+                  <span>Sep 28, 2023</span>
+                </div>
+                <h2 class="result-card__title">Triángulo del litio: innovación vs extracción en Argentina</h2>
+                <p>
+                  Mientras la extracción se acelera, científicos en Buenos Aires desarrollan métodos sostenibles que podrían
+                  proteger ecosistemas locales.
+                </p>
+                <div class="result-card__footer">
+                  <span>Alejandro Rossi</span>
+                  <span>·</span>
+                  <span>12 min de lectura</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="result-card">
+              <img class="result-card__thumb" src="assets/img/pebe2.png" alt="Control retro de videojuegos" />
+              <div class="result-card__content">
+                <div class="result-card__meta">
+                  <span class="result-card__badge result-card__badge--review">Review</span>
+                  <span>Aug 15, 2023</span>
+                </div>
+                <h2 class="result-card__title">Blasphemous 2: una obra maestra del pixel art y el castigo</h2>
+                <p>
+                  The Game Kitchen regresa con una secuela que refina cada mecánica. Exploramos su conexión con iconografía
+                  religiosa y su resonancia en LATAM.
+                </p>
+                <div class="result-card__footer">
+                  <span>Sofia Mendez</span>
+                  <span>·</span>
+                  <span>6 min de lectura</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="search-results__actions">
+            <button class="button secondary" type="button">
+              Cargar más artículos
+              <i class="bi bi-chevron-down" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        ANXiNA · Tecnología con criterio. Escríbenos en <a href="pages/contactanos.html">Contáctanos</a>. Consulta nuestra
+        <a href="pages/politica_de_privacidad.html">política de privacidad</a> y los
+        <a href="pages/terminos_de_servicio.html">términos</a>.
+      </p>
+    </div>
+  </footer>
+  <script src="assets/js/theme-toggle.js"></script>
+  <script src="assets/js/nav-menu.js"></script>
+  <script src="assets/js/search-page.js"></script>
+</body>
+</html>
