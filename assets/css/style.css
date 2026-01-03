@@ -693,6 +693,13 @@ a:focus {
   background: color-mix(in srgb, var(--callout-bg) 80%, var(--accent) 20%);
 }
 
+.category-pill[aria-current="page"],
+.category-pill--active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--panel);
+}
+
 .bi {
   font-size: 1.1em;
   line-height: 1;
