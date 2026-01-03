@@ -189,8 +189,10 @@ a:focus {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--callout-bg);
   color: inherit;
 }
 
@@ -202,6 +204,7 @@ a:focus {
 .nav-menu > summary:hover,
 .nav-menu > summary:focus-visible {
   border-color: var(--accent);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .nav-menu__panel {
