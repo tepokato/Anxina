@@ -380,6 +380,10 @@ a:focus {
   align-items: stretch;
 }
 
+.hero__grid > .section-title {
+  grid-column: 1 / -1;
+}
+
 .hero__card {
   background: var(--panel);
   border: 1px solid var(--border);
