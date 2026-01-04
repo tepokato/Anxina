@@ -184,11 +184,11 @@ STREAM_ITEM_TEMPLATE = """        <article class="post post--compact">
           </div>
         </article>"""
 
-HERO_TEMPLATE = """        <article class="hero__card">
+HERO_TEMPLATE = """        <article class="post post--compact hero__card">
           <a href="posts/{slug}.html">
-            <img class="hero__thumb" src="{image}" alt="{alt}" />
+            <img class="post__thumb hero__thumb" src="{image}" alt="{alt}" />
           </a>
-          <div class="hero__content">
+          <div class="post__body hero__content">
             <div class="badge">En portada</div>
             <h2>
               <a class="post__title-link" href="posts/{slug}.html">{title}</a>

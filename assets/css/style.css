@@ -386,9 +386,9 @@ a:focus {
   border-radius: 10px;
   padding: 18px;
   display: grid;
-  grid-template-columns: minmax(220px, 320px) 1fr;
-  gap: 28px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
   position: relative;
   box-shadow: 0 6px 16px rgba(31, 19, 8, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -446,9 +446,8 @@ a:focus {
   background: #fff4e5;
   color: var(--accent-strong);
   border-radius: 999px;
-  position: absolute;
-  top: 18px;
-  right: 18px;
+  position: static;
+  align-self: flex-start;
 }
 
 .hero__card .badge::before,
