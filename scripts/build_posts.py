@@ -588,7 +588,7 @@ def main() -> None:
             post.source_path.unlink()
 
     portada_post = published[0] if published else None
-    stream_posts = published[1:] if portada_post else published
+    stream_posts = (published[1:] if portada_post else published)[:5]
     stream_html = render_stream(stream_posts)
     portada_html = render_portada(portada_post) if portada_post else None
     update_index(stream_html, portada_html)
