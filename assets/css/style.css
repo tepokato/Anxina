@@ -93,8 +93,15 @@ a:focus {
 .header-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 28px;
+  flex-wrap: wrap;
+}
+
+.header-top__main {
+  display: flex;
+  align-items: center;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
@@ -353,6 +360,13 @@ a:focus {
   color: var(--text);
   font-weight: 600;
   cursor: pointer;
+}
+
+.theme-toggle--fixed {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 50;
 }
 
 .theme-toggle__icon {
