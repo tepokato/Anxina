@@ -99,27 +99,29 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <header class="site-header">
     <div class="container">
       <div class="header-top">
-        <div class="brand">
-          <a class="brand__link" href="../index.html">
-            <div class="brand__badge">
-              <h1 class="brand__title">ANXiNA</h1>
-            </div>
-          </a>
-        </div>
-        <nav class="nav" aria-label="Navegación principal">
-          <a href="../index.html">Inicio</a>
+        <div class="header-top__main">
+          <div class="brand">
+            <a class="brand__link" href="../index.html">
+              <div class="brand__badge">
+                <h1 class="brand__title">ANXiNA</h1>
+              </div>
+            </a>
+          </div>
+          <nav class="nav" aria-label="Navegación principal">
+            <a href="../index.html">Inicio</a>
           <a href="../pages/contactanos.html">Contáctanos</a>
           <a href="../pages/politica_de_privacidad.html">Política de privacidad</a>
           <a href="../pages/benefactores.html">Benefactores</a>
           <a href="../pages/terminos_de_servicio.html">Términos</a>
-        </nav>
+          </nav>
+        </div>
       </div>
       <div class="header-meta">
         <label class="search" aria-label="Buscar en ANXiNA">
           <span class="search__prompt" aria-hidden="true">&gt;_</span>
           <input type="search" placeholder="buscar..." />
         </label>
-        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
+        <button class="theme-toggle theme-toggle--fixed" type="button" aria-pressed="false" aria-label="Activar tema claro">
           <i class="theme-toggle__icon bi bi-moon-fill" aria-hidden="true"></i>
           <span class="theme-toggle__switch" aria-hidden="true"></span>
         </button>
