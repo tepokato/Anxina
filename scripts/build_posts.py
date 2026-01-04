@@ -193,7 +193,14 @@ HERO_TEMPLATE = """        <h3 class="section-title">En portada</h3>
             <h2>
               <a class="post__title-link" href="posts/{slug}.html">{title}</a>
             </h2>
+            <div class="post__meta">
+              <span>{date}</span>
+              <span>{author} · {category}</span>
+            </div>
             <p>{summary}</p>
+            <div class="post__tags">
+{tags}
+            </div>
             <div class="post__actions">
               <a class="button" href="posts/{slug}.html">Leer artículo</a>
             </div>
@@ -509,6 +516,10 @@ def render_portada(post: Post) -> str:
         alt=html.escape(post.featured_image_alt),
         title=html.escape(post.title),
         summary=html.escape(post.summary),
+        date=html.escape(post.date),
+        author=html.escape(post.author),
+        category=html.escape(post.category),
+        tags=format_tags(post.tags, limit=3, indent="              "),
         slug=html.escape(post.slug),
     )
 
