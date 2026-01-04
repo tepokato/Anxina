@@ -576,8 +576,10 @@ def main() -> None:
         if post.status.lower() == "published" and post.source_path.exists():
             post.source_path.unlink()
 
-    stream_html = render_stream(published)
-    portada_html = render_portada(published[0]) if published else None
+    portada_post = published[0] if published else None
+    stream_posts = published[1:] if portada_post else published
+    stream_html = render_stream(stream_posts)
+    portada_html = render_portada(portada_post) if portada_post else None
     update_index(stream_html, portada_html)
 
 
