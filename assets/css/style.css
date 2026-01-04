@@ -376,7 +376,7 @@ a:focus {
 .hero__grid {
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: stretch;
 }
 
@@ -396,6 +396,14 @@ a:focus {
   position: relative;
   box-shadow: 0 6px 16px rgba(31, 19, 8, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero__card--feature {
+  grid-column: 1 / -1;
+  padding: 28px;
+  gap: 28px;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
 
 .hero__card:hover,
@@ -418,6 +426,12 @@ a:focus {
   aspect-ratio: 16 / 9;
 }
 
+.hero__card--feature .hero__thumb {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 280px;
+}
+
 .hero__content {
   display: grid;
   gap: 12px;
@@ -425,6 +439,8 @@ a:focus {
 
 .hero__card h2 {
   margin-top: 0;
+  font-size: clamp(1.6rem, 1.2vw + 1.4rem, 2.4rem);
+  line-height: 1.2;
 }
 
 .badge {
@@ -1212,6 +1228,10 @@ a:focus {
   .result-card {
     grid-template-columns: 1fr;
   }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -1328,6 +1348,11 @@ a:focus {
     padding: 16px;
     grid-template-columns: 1fr;
     justify-items: start;
+  }
+
+  .hero__card--feature {
+    padding: 18px;
+    gap: 20px;
   }
 
   .hero__card .badge {
