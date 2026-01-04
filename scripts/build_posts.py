@@ -87,9 +87,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   <meta name="twitter:image" content="{og_image}" />
   <meta name="twitter:image:alt" content="{og_image_alt}" />
   <meta name="theme-color" content="#f6efe6" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <script type="application/ld+json">
 {json_ld}
   </script>
@@ -107,20 +107,20 @@ HTML_TEMPLATE = """<!DOCTYPE html>
               </div>
             </a>
           </div>
-          <nav class="nav" aria-label="Navegación principal">
+          <nav class="nav-inline" aria-label="Navegación principal">
             <a href="../index.html">Inicio</a>
-          <a href="../pages/contactanos.html">Contáctanos</a>
-          <a href="../pages/politica_de_privacidad.html">Política de privacidad</a>
-          <a href="../pages/benefactores.html">Benefactores</a>
-          <a href="../pages/terminos_de_servicio.html">Términos</a>
+            <a href="../pages/search.html">Buscar</a>
           </nav>
         </div>
       </div>
       <div class="header-meta">
-        <label class="search" aria-label="Buscar en ANXiNA">
-          <span class="search__prompt" aria-hidden="true">&gt;_</span>
-          <input type="search" placeholder="buscar..." />
-        </label>
+        <details class="nav-menu">
+          <summary><i class="bi bi-list" aria-hidden="true"></i><span>Menú</span></summary>
+          <nav class="nav-menu__panel" aria-label="Navegación principal">
+            <a href="../index.html">Inicio</a>
+            <a href="../pages/search.html">Buscar</a>
+          </nav>
+        </details>
         <button class="theme-toggle theme-toggle--fixed" type="button" aria-pressed="false" aria-label="Activar tema claro">
           <i class="theme-toggle__icon bi bi-moon-fill" aria-hidden="true"></i>
           <span class="theme-toggle__switch" aria-hidden="true"></span>
@@ -149,6 +149,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
   </main>
 
+
+  <button class="back-to-top" type="button" aria-label="Volver al inicio">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  </button>
+
   <footer class="footer">
     <div class="container footer__content">
       <div class="footer__column">
@@ -170,15 +175,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
           <li><a href="../pages/terminos_de_servicio.html">Términos</a></li>
           <li><a href="../pages/contactanos.html">Contáctanos</a></li>
         </ul>
-        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Activar tema claro">
-          <i class="theme-toggle__icon bi bi-moon-fill" aria-hidden="true"></i>
-          <span class="theme-toggle__switch" aria-hidden="true"></span>
-        </button>
       </div>
     </div>
   </footer>
   <script src="../assets/js/theme-toggle.js"></script>
   <script src="../assets/js/nav-menu.js"></script>
+  <script src="../assets/js/back-to-top.js"></script>
 </body>
 </html>
 """
