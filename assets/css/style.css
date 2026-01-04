@@ -996,8 +996,52 @@ a:focus {
   font-size: 0.9rem;
 }
 
+.footer__content {
+  display: grid;
+  gap: 24px;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__title {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.footer__text {
+  margin: 0;
+  max-width: 320px;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.footer__list a {
+  color: inherit;
+}
+
+.footer .theme-toggle {
+  align-self: flex-start;
+}
+
 .footer a {
   color: var(--accent);
+}
+
+@media (min-width: 768px) {
+  .footer__content {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .page {
